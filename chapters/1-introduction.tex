@@ -1,7 +1,186 @@
 \chapter{Introduction}
 
-Over the years, several thesis templates for \LaTeX{} have been developed by different groups at NTNU. Typically, there have been local templates for given study programmes, or different templates for the different study levels – bachelor, master, and \acrshort{phd}.\footnote{see, e.g., \url{https://github.com/COPCSE-NTNU/bachelor-thesis-NTNU} and \url{https://github.com/COPCSE-NTNU/master-theses-NTNU}}
+\section{Problem domain - Self-Sovereign Identity}
 
-Based on this experience, the \acrfull{CoPCSE}\footnote{\url{https://www.ntnu.no/wiki/display/copcse/Community+of+Practice+in+Computer+Science+Education+Home}} is hereby offering a template that should in principle be applicable for theses at all study levels. It is closely based on the standard \LaTeX{} \texttt{report} document class as well as previous thesis templates. Since the central regulations for thesis design have been relaxed – at least for some of the historical university colleges now part of NTNU – the template has been simlified and put closer to the default \LaTeX{} look and feel.
+Self-Sovereign-Identity (SSI) consist of technologies, hosted by well-known standards-organizations such as World Wide Web Consortium [W3C](https://www.w3.org/) and Decentralized Identity Foundation [DIF](https://github.com/decentralized-identity).
 
-The purpose of the present document is threefold. It should serve (i) as a description of the document class, (ii) as an example of how to use it, and (iii) as a thesis template.
+\paragraph{}
+SSI attempts to solve many problems present in today's internet. Decentralized identifiers (DID's) is a core SSI-technology, and it's design goals gives us a hint about which problems SSI is trying to solve:
+
+
+\paragraph{}
+*The three first design goals from [DID - 1.2 Design Goals](https://www.w3.org/TR/did-core/#design-goals)*:
+\begin{description}
+    
+    \item[Decentralization:] Eliminate the requirement for centralized authorities or single point failure in identifier management, including the registration of globally unique identifiers, public verification keys, services, and other information.
+    \item[Control:] Give entities, both human and non-human, the power to directly control their digital identifiers without the need to rely on external authorities.
+    \item [Privacy:] Enable entities to control the privacy of their information, including minimal, selective, and progressive disclosure of attributes or other data.
+
+\end{description}
+
+\paragraph{}
+The standards developed within the realm of SSI, are developed as open-source collaborative documents. The documents, when finalized, become specifications which is intended to be used by developers whenementing SSI-applications.
+
+To read on, it is highly recommended that you atleast have a surface-level understanding of the following three core SSI-specifications, and how they relate to one another:
+
+\begin{description}
+\item [Descentralized Identifiers (DIDs) v1.0:] How to create and control decentralized, digital agents, represented by a globally unique identifier called a `DID` - https://www.w3.org/TR/did-core/
+\item [DIDComm messaging v2:] How `DID`-agents should communicate with each other - https://identity.foundation/didcomm-messaging/spec/ 
+\item [Verifiable Credentials Data Model 1.0:] How `DID`-agents issue verifiable claims about the attributes of each other and their relationships - https://www.w3.org/TR/vc-data-model/ 
+\end{description}
+
+
+\paragraph{}
+All of these specifications are work-in-progress as of today - 2021-05-06 - and thus are subject to change, though they are considered stable enough for the SSI-community to have started developing serious applications based on them.
+
+\section{Problem Scope - Agent software}
+
+\begin{itemize}
+\item Within the SSI space, there is a need to develop a specific type of software, called an agent.
+\item An agent is a piece of software which implements protocols defined by the different SSI-specifications.
+\item If an agent follows the specifications correctly, it should be able to communicate interoperably with other agents.
+\item There are many similarities between SSI-agents and web-browser-agents. All web-browsers are interoperable with each other (most of the time), because they are using the same underlying open-source, standardized web-technologies.
+\item SSI-agents and web-browser-agents differ in their problem domain, and are not intended to be interoperable with each other.
+\item Currently there are SSI-agent-implementations in Python, C#, Javascript, Rust, Golang, and probably more, and they should in theory be interoperable with each other. (@TODO link to source of implementations)
+\item From now on, the term "agent" strictly used to refer to an SSI-agent, NOT web-browser-agent.
+\item Each type of agent implements a different subset of SSI protocols. This is because different agents are made to solve different problems within the SSI problem domain.
+\item For instance a "Wallet", is a specific kind of agent, used to store and manage personal credentials.
+\end{itemize}
+
+
+
+\section{Project Owner - Decentralized Identity Norden}
+
+Decentalized Identity Norden, or DIN, is a non-profit organization devoted to promote decentralized identity in a nordic context, and highlight the consequences this may have for individuals and society as a whole. See: https://www.din.foundation/om. 
+
+\subsection{Project motivation}
+
+DIN wants the project to implement a proof-of-concept agent. The proof-of-concept agent should solve a specific scenario which is relevant to DIN's agenda. The demonstration of solving a specific scenario should inspire and educate people about real-world use-cases of decentralized identity (aka self-sovereign identity).
+
+\subsection{Project Scenario}
+
+The proof-of-concept agent should be able to demonstrate the following scneario.
+
+\paragraph{}
+>The norwegian driver license issuer, Statens Vegvesen, is considering to start issuing it's driver licenses as verifiable credentials (VCs). Statens Vegvesen is not sure if verifiable credentials is the future yet, but are willing to try and dip it's toes in the water. Statens vegvesen will still issue credentials in the traditional way for the forseeable future.
+
+\paragraph{}
+>What Statens Veivesen want is a proof-of-concept SSI-application which will issue, hold and verify driver-licenses. They are hoping that this will bootstrap SSI in Norway, as this will enable other individuals and organizations to start experimenting with holding and verifying a serious credentials which actually are useful.
+
+\paragraph{}
+>The proof-of-concept may demonstrate, that a driver license as a verifiable credential could be considered on par, legally speaking, with traditional driver licenses.
+
+
+\paragraph{}
+>Statens Vegvesen wants the application to follow open standards which will enable the application to be agnostic about where and how credentials are issued, stored and verified. In other words Statens Vegvesen want to avoid the application to be locked to a specific ledger and a specific wallet.
+
+
+\section{Goals}
+
+\subsection{Resultatmål}
+
+\begin{itemize}
+\item Deliver a high-level design document.
+\item Develop the application as an open-source project inside DIN-Foundation's Github organization, which solves the scenario.
+\item Present and demonstrate that the application implemented solves the scenario.
+\item Develop a discussion about interoperability in the SSI ecosystem.
+\end{itemize}
+
+\subsection{Effektmål}
+
+\begin{itemize}
+\item Engage with the broader DIF-community during development.
+\item Educate people about a practical application of SSI technology.
+\end{itemize}
+
+\subsection{Læringsmål}
+
+\begin{itemize}
+\item Gain deep understand SSI's layered tech stack - Layer 1 (DID), Layer2 (DIDComm), Layer 3 (VC), Layer 4 (Applications)
+\item Gain hands-on experience with developing a SSI agent.
+\item Learn a new programming language like Rust.
+\item Learn how to work on a project 100% remotely from start to finish.
+\end{itemize}
+
+
+
+\section{Target audience}
+
+\subsection{Government institutions}
+
+\begin{itemize}
+\item The proof-of-concepts is developed specifically to solve the problem of a government institution.
+\item The demonstration could inspire lawmakers and government officials to see the true potential of how SSI could make a real change for the better.
+\end{itemize}
+
+\subsection{Developers who are new into SSI}
+\begin{itemize}
+\item When getting into SSI for the first time, the landscape can be a bit difficult to navigate.
+\item This project navigates the SSI landscape from a beginners perspective, and by doing so hopes to make the "Getting started"-part for other developers a bit easier.
+\end{itemize}
+
+\subsection{SSI Specification writers}
+\begin{itemize}
+\item Specification writers - people who write the documents that dictate implementations of SSI - are concerned with how beginner-friendly their specifications are.
+\item This work may shed some light on how easy it is for new-comers to get started, and may as a result lead to suggested improvements to current specs.
+\end{itemize}
+
+
+
+\section{Team Roles}
+
+The team working on this project consists of a 1 student, 1 product owner, 2 tech supervisors and 1 academic supervisor.
+
+\begin{table}
+  \centering
+  \caption{Team Roles}
+  \label{tab:example1}
+  \begin{tabular}{cc}
+    \hline
+    Name  & Role \\
+    \hline
+    Jonas       & Leader, Developer, Student         \\
+    Snorre      & Product Owner, Tech supervisor \\
+    Mariusz     & Tech supervisor \\
+    Abylay      & Tech supervisor \\
+    Deepti      & Academic supervisor \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+\section{Report Chapters}
+
+\begin{description}
+    \item[Chapter 2:] Development Process - How the project was managed.
+    \item[Chapter 3:] Requirements - A list of functional and non-functional requirements of the agent.
+    \item[Chapter 4:] Command-Line Interface - A description of the user-interface of the agent.
+    \item[Chapter 5:] Application Architecture - A description of the high-level design of the agent.
+    \item[Chapter 6:] Source code - Details about the DID-CLI source-code.
+    \item[Chapter 7,8,9,10,11:] Discussion
+
+\end{description}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Over the years, several thesis templates for \LaTeX{} have been developed by different groups at NTNU. Typically, there have been local templates for given study programmes, or different templates for the different study levels – bachelor, master, and \acrshort{phd}.\footnote{see, e.g., \url{https://github.com/COPCSE-NTNU/bachelor-thesis-NTNU} and \url{https://github.com/COPCSE-NTNU/master-theses-NTNU}}
+
+%Based on this experience, the \acrfull{CoPCSE}\footnote{\url{https://www.ntnu.no/wiki/display/copcse/Community+of+Practice+in+Computer+Science+Education+Home}} is hereby offering a template that should in principle be applicable for theses at all study levels. It is closely based on the standard \LaTeX{} \texttt{report} document class as well as previous thesis templates. Since the central regulations for thesis design have been relaxed – at least for some of the historical university colleges now part of NTNU – the template has been simlified and put closer to the default \LaTeX{} look and feel.
+
+%The purpose of the present document is threefold. It should serve (i) as a description of the document class, (ii) as an example of how to use it, and (iii) as a thesis template.
