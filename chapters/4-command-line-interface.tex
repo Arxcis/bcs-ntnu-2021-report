@@ -15,159 +15,213 @@ Many of the commands in the DID-CLI, is designed in a way to easily integrate wi
 cat message.dcem | did read | grep jonas 
 ```
 
+\newpage
 
 \section{Commands}
 
+
+
 \subsection{did help}
-
-- List all available commands.
-
-- **Example:**
-
-    ![](./images/cmd-help.png)
-
+\begin{itemize}
+\item Lists all available commands.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-help.png}
+      \caption[]{Example running did help}
+    \end{figure}
+    
+    
+    
 \subsection{did init}
-
-- Initializes a did-agent in the working directory.
-- Run this command before running any other commands.
-- The command creates a new `.did/`-directory, inside your working directory.
-- A secret/private key is stored inside `.did/`.
-- All your agents wallet-data will be stored inside `.did/`.
-- Your agents `did` will be returned to `stdout` when running this command.
-- If a `.did/` already exists, this commands has no side-effects - the command is idempotent.
-- `did init` is intentionally almost identical to `git init`, to make it easier for new users to understand the CLI by reusing a good design-pattern from a well-known CLI like `git`-CLI.
-
-- **Example**:
-
-    ![](./images/cmd-init.png)
+\begin{itemize}
+\item Creates an agent in the current directory.
+\item The command creates a new `.did/`-directory, inside your working directory.
+\item Your agents DID will be returned to `stdout` when running this command.
+\item The command is idempotent.
+\item \texttt{did init} bahaves almost identical to \texttt{git init}. This is intentional.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-init.png}
+      \caption[]{Example running did init}
+    \end{figure}
+    
 
 
 \subsection{did doc}
+\begin{itemize}
+\item Prints the did-document, controlled by the did agent.
+\item Since the did-agent uses did-key as it's underlying did-method, the did-document is generated from the public-private keypair.
+\item Another way to describe this is that did-key is self-resolving - the did-document is resolved directly from the did.
+\item This is a limitation of the did-key method, and how it is specified.
+\item Once created, the did-document pinned to a did-key did, is not possible to edit.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-doc.png}
+      \caption[]{Example running did doc}
+    \end{figure}
 
-- Prints the did-document, controlled by the did agent.
-- Since the did-agent uses did-key as it's underlying did-method, the did-document is generated from the public-private keypair.
-- Another way to describe this is that did-key is self-resolving - the did-document is resolved directly from the did.
-- This is a limitation of the did-key method, and how it is specified.
-- Once created, the did-document pinned to a did-key did, is not possible to edit.
-
-- **Example**:
-
-    ![](./images/cmd-doc.png)
 
 
 \subsection{did dids}
+\begin{itemize}
+\item List all dids stored in the agent.
+\item Dids are added to the agent when running the `did connect` command.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-dids.png}
+      \caption[]{Example running did dids}
+    \end{figure}
 
-- List all dids stored in the agent.
-- Dids are added to the agent when running the `did connect` command.
 
-- **Example:**
-
-    ![](./images/cmd-dids.png)
 
 \subsection{did did <didname>}
+\begin{itemize}
+\item Show the did of a single `<didname>`.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-did.png}
+      \caption[]{Example running did did}
+    \end{figure}
 
-- Show the did of a single `<didname>`.
-
-- **Example:**
-
-    ![](./images/cmd-did.png)
 
 
 \subsection{did connect <didname> <did>}
+\begin{itemize}
+\item `did connect` connects a `<didname>` to `<did>`
+\item `did connect` gives a `<did>` a `<didname>`.
+\item The `<didname>` is used in other commands, as an easy way to refer to another agent's `<did>`.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-connect.png}
+      \caption[]{Example running did connect}
+    \end{figure}
 
-- `did connect` connects a `<didname>` to `<did>`
-- `did connect` gives a `<did>` a `<didname>`.
-- The `<didname>` is used in other commands, as an easy way to refer to another agent's `<did>`.
 
-- **Example**:
-
-    ![](./images/cmd-connect.png)
 
 \subsection{did write <didname> <message>}
-
-- Wraps a user defined message inside a `<dcem>`-envelope.
-- Sets the `to`-header of the `<dcem>` to the underlying `<did>` refered to by the `<didname>`.
-- Gives the message a new globally unique `id`.
-
-- **Example**:
-
-    ![](./images/cmd-write.png)
-
-    ![](./images/cmd-write-alt.png)
+\begin{itemize}
+\item Wraps a user defined message inside a `<dcem>`-envelope.
+\item Sets the `to`-header of the `<dcem>` to the underlying `<did>` refered to by the `<didname>`.
+\item Gives the message a new globally unique `id`.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.6\textwidth]{figures/cmd-write.png}
+      \caption[]{Example running did write}
+    \end{figure}
+\newpage
 
 \subsection{did read <dcem>}
+\begin{itemize}
+\item Unwraps an `<dcem>` message from `stdin` or from `<dcem>`-arg.
+\item Prints the plaintext body of the message.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.65\textwidth]{figures/cmd-read-message.png}
+      \caption[]{Example running did read <message>}
+    \end{figure}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.65\textwidth]{figures/cmd-read-vc.png}
+      \caption[]{Example running did read <verifiable credential>}
+    \end{figure}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.66\textwidth]{figures/cmd-read-vp.png}
+      \caption[]{Example running did read <verifiable presentation>}
+    \end{figure}
 
-- Unwraps an `<dcem>` message from `stdin` or from `<dcem>`-arg.
-- Prints the plaintext body of the message.
+\newpage
 
-- **Example**:
-
-    ![](./images/cmd-read-message.png)
-
-    ![](./images/cmd-read-vc.png)
-
-    ![](./images/cmd-read-vp.png)
 
 
 \subsection{did issue <CredentialType> <didname>}
+\begin{itemize}
+\item Issues a verifiable credential addressed to the `did` of `<didname>`:
+\item Issues one of 4 `<CredentialType>`s:
+    \begin{itemize}
+    \item Passport
+    \item DriversLicense
+    \item TrafficAuthority
+    \item LawEnforcer
+    \end{itemize}
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-issue.png}
+      \caption[]{Example running did issue}
+    \end{figure}
 
-- Issues a verifiable credential addressed to the `did` of `<didname>`:
-- Issues one of 4 `<CredentialType>`s
-    * Passport
-    * DriversLicense
-    * TrafficAuthority
-    * LawEnforcer
-
-- **Example**:
-
-    ![](./images/cmd-issue.png)
-
-    ![](./images/cmd-issue-alt.png)
 
 
 \subsection{did hold <dcem>}
+\begin{itemize}
+    \item Holds <dcem> and prints it to stdout
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-hold.png}
+      \caption[]{Example running did hold}
+    \end{figure}
 
-- **Example:**
-
-    ![](./images/cmd-hold.png)
+\newpage
 
 \subsection{did present <didname> <dcem>}
+\begin{itemize}
+    \item Prints a Verifiable Presentation to stdout, with <dcem> as it's content 
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-present.png}
+      \caption[]{Example running did present}
+    \end{figure}
 
-- **Example:**
-
-    ![](./images/cmd-present.png)
-
-    ![](./images/cmd-present-alt.png)
 
 \subsection{did verify <issuer didname> <subject didname> <dcem>}
+\begin{itemize}
+\item Prints `<dcem>` to `stdout`, if, and only if, verification succeeds.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-verify.png}
+      \caption[]{Example running did verify}
+    \end{figure}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-verify-issuerfails.png}
+      \caption[]{Example running did verify when issuer.did fails}
+    \end{figure}
 
-- Print `<dcem>` to `stdout`, if, and only if, verification succeeds.
 
-- **Example:**
-
-    ![](./images/cmd-verify.png)
-
-    ![](./images/cmd-verify-issuerfails.png)
-
-    ![](./images/cmd-verify-subjectfails.png)
+\newpage
 
 \subsection{did messages}
-
-- List all didcomm messages stored in the wallet.
-- Messages are added to the wallet when using the `did hold` command.
-
-- **Example:**
-
-    ![](./images/cmd-messages.png)
+\begin{itemize}
+\item List all didcomm messages stored in the wallet.
+\item Messages are added to the wallet when using the `did hold` command.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-messages.png}
+      \caption[]{Example running did messages}
+    \end{figure}
 
 \subsection{did message <message id>}
-
-- Show the contents of a single didcomm message based on the given `<message id>`.
-
-- **Example:**
-
-    ![](./images/cmd-message.png)
-
+\begin{itemize}
+\item Show the contents of a single didcomm message based on the given `<message id>`.
+\end{itemize}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.7\textwidth]{figures/cmd-message.png}
+      \caption[]{Example running did message}
+    \end{figure}
 
 \section{Intentional limitations of the CLI}
 

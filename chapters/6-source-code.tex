@@ -4,44 +4,59 @@
 
 The source code is following the "guidelines for binary projects", given by the Rust-book, quoted in full below:
 
+
+\paragraph{}
 >### Separation of Concerns for Binary Projects
->
+
+\paragraph{}
 >The organizational problem of allocating responsibility for multiple tasks to the main function is common to many binary projects. As a result, the Rust community has developed a process to use as a guideline for splitting the separate concerns of a binary program when main starts getting large. The process has the following steps:
->
+
+
+\paragraph{}
 >* Split your program into a main.rs and a lib.rs and move your program’s logic to lib.rs.
 >* As long as your command line parsing logic is small, it can remain in main.rs.
 >* When the command line parsing logic starts getting complicated, extract it from main.rs and move it to lib.rs.
->
+
+
+\paragraph{}
 >The responsibilities that remain in the main function after this process should be limited to the following:
->
+
+
+\paragraph{}
 >* Calling the command line parsing logic with the argument values
 >* Setting up any other configuration
 >* Calling a run function in lib.rs
 >* Handling the error if run returns an error
->
+
+
+\paragraph{}
 >This pattern is about separating concerns: main.rs handles running the program, and lib.rs handles all the logic of the task at hand. Because you can’t test the main function directly, this structure lets you test all of your program’s logic by moving it into functions in lib.rs. The only code that remains in main.rs will be small enough to verify its correctness by reading it. Let’s rework our program by following this process.
 
+\paragraph{}
 Ref: https://doc.rust-lang.org/book/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects
 
 
 \subsection{File structure}
 
-Here is a screenshot of the file-structure, which follows from the code organization:
 
-![](./images/code-organization.png)
-
-
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.3\textwidth]{figures/code-organization.png}
+      \caption[]{screenshot of the file-structure}
+    \end{figure}
 
 \subsection{Cargo package}
 
-- The source code is developed in the Rust programming language, as a Rust-package.
-- There are two kinds of Rust-packages - binary packages (standalone executeables) and library packages (meant to be reused in other packages).
-- Our Rust-package is named `did`, and is a binary package.
-- All Rust-packages contains a `Cargo.toml` file, for stating metainfo about the source code.
-- Here is a listing of the beginning of our [Cargo.toml](https://github.com/DIN-Foundation/bcs-ntnu-2021/blob/main/did-cli/Cargo.toml)
-
-    *Filename: Cargo.toml*
-    ```toml
+\begin{itemize}
+    \item The source code is developed in the Rust programming language, as a Rust-package.
+    \item There are two kinds of Rust-packages - binary packages (standalone executeables) and library packages (meant to be reused in other packages).
+    \item Our Rust-package is named `did`, and is a binary package.
+     All Rust-packages contains a `Cargo.toml` file, for stating metainfo about the source code.
+    \item Here is a listing of the beginning of our [Cargo.toml](https://github.com/DIN-Foundation/bcs-ntnu-2021/blob/main/did-cli/Cargo.toml)
+\end{itemize}
+    
+    \begin{lstlisting}[language=toml,caption={Cargo.toml}]
+    
     [package]
     name = "did"
     version = "0.1.0"
@@ -50,73 +65,54 @@ Here is a screenshot of the file-structure, which follows from the code organiza
 
     [dependencies]
     ...many things here
-    ```
+    \end{lstlisting}
 
-- The Rust-package's source code can be found in the [did-cli](https://github.com/DIN-Foundation/bcs-ntnu-2021/tree/main/did-cli) sub-folder of our [bachelor's Github project](https://github.com/DIN-Foundation/bcs-ntnu-2021).
 
 \section{Build instructions}
 
-1. Make sure you have installed the latest rust toolchain on your machine.
+\begin{itemize}
+\item 1. Make sure you have installed the latest rust toolchain on your machine.
 
-    *Example of using rustup to install the rust toolchain. See: https://rustup.rs/*
-    ```
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    ```
+\begin{lstlisting}[language=bash,caption={From https://rustup.rs/}]
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+\end{lstlisting}
 
-2. Clone from github source code
-    ```
-    git clone git@github.com:DIN-Foundation/bcs-ntnu-2021.git
-    git submodule update --init --recursive
-    ```
+\item 2. Clone from github source code
 
-3. Build the `did`-CLI using `cargo`
-    ```
-    cd bcs-ntnu-2021/did-cli/
-    cargo build
-    ```
+\begin{lstlisting}[language=bash,caption={}]
+git clone git@github.com:DIN-Foundation/bcs-ntnu-2021.git
+git submodule update --init --recursive
+\end{lstlisting}
 
-4. Copy the built executeable into some directory in your `$PATH`.
 
-    *Example of copying into `$HOME/bin/`*
-    ```
-    cp target/debug/did \$HOME/bin/
-    ```
+\item 3. Build the `did`-CLI using `cargo`
 
-5. Run `did` by typing `did <command>` in your terminal.
-    ```
-    did help
-    ```
+\begin{lstlisting}[language=bash,caption={}]
+cd bcs-ntnu-2021/did-cli/
+cargo build
+\end{lstlisting}
+
+\item 4. Copy the built executeable into some directory in your `\$PATH`.
+
+\begin{lstlisting}[language=bash,caption={}]
+cp target/debug/did \$HOME/bin/
+\end{lstlisting}
+
+
+\item 5. Run `did` by typing `did <command>` in your terminal.
+
+\begin{lstlisting}[language=bash,caption={}]
+did help
+\end{lstlisting}
+\end{itemize}
 
 
 
 \section{Usage of existing Rust libraries}
 
-\subsubsection{decentralized-identity/didcomm-rs}
-
-- github.com: https://github.com/decentralized-identity/didcomm-rs
-- crates.io: https://crates.io/crates/didcomm-rs
-- docs.rs: https://docs.rs/didcomm-rs/0.2.4/didcomm_rs/
-
-\subsubsection{spruceid/didkit}
-
-- github.com: https://github.com/spruceid/didkit
-- docs: https://spruceid.dev/docs/didkit/
-
-\subsubsection{trinsic-id/did-key.rs}
-
-- github.com: https://github.com/trinsic-id/did-key.rs
-- crates.io: https://crates.io/crates/did-key
-- docs.rs: https://docs.rs/did-key/0.0.11/did_key/
-
-\subsubsection{dalek-cryptography/ed25519-dalek}
-
-- github.com: https://github.com/dalek-cryptography/ed25519-dalek
-- docs.rs: https://docs.rs/ed25519-dalek/1.0.1/ed25519_dalek/
-- crates.io: https://crates.io/crates/ed25519-dalek
-
-\subsubsection{dalek-cryptography/x25519-dalek}
-
-- github.com: https://github.com/dalek-cryptography/x25519-dalek
-- docs.rs: https://docs.rs/x25519-dalek/1.1.0/x25519_dalek/
-- crates.io: https://crates.io/crates/x25519-dalek
-
+\begin{description}
+    \item[didcomm-rs:] Implements DIDComm v2 spec
+    \item[spruceid/ssi:] Implements Verifiable Credentials spec
+    \item[did-key.rs:] Implements DID-key method spec
+    \item[ed25519-dalek:] Implements ed25519 public-private keypair management
+\end{description}
