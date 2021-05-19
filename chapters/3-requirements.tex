@@ -224,80 +224,99 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 \section{Functional Requirements Layer 4 - Scenario}
 
-\subsection{As a citizen I want to publish my DID to a file}
 
-```
-GIVEN I have an agent
-WHEN  I run `did init > self.did`
-OR    I run `did did self > self.did`
-THEN  a file with the name `self.did` should contain my DID.
-```
 
-\subsection{As governemnt I want to connect my citizens DIDs to names}
+\subsection{As a citizen I want to publish my DID to a directory other citizens can access}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[When] I run \texttt{did init > ../jonas.did}
+    \item[or] I run \texttt{did did self > ../jonas.did}
+    \item[Then] a file with the name \texttt{../jonas.did} should contain my DID.
+\end{description}\end{description}
 
-```
-GIVEN my citizens each have their own agents
-AND   each citizens has published their DIDs as files: `snorre.did`, `abylay.did`, `jonas.did`
-WHEN  I run `cat jonas.did | did connect jonas`
-AND   I run `cat abylay.did | did connect abylay`
-AND   I run `cat snorre.did | did snorre snorre`
-THEN  I should be able to refer to my citizens DIDnames `jonas`,`abylay` and `snorre`, in other commands.
-```
+
+
+\subsection{As a government I want to connect to my citizens' agents}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] my citizens each have their own agents
+    \item[and] each citizen have published their DID as files \textt{../snorre.did}, \texttt{abylay.did}, \texttt{jonas.did}
+    \item[When] I run \texttt{cat jonas.did | did connect jonas}
+    \item[and] I run \texttt{cat abylay.did | did connect abylay}
+    \item[and] I run \texttt{cat snorre.did | did snorre snorre}
+    \item[Then] I should be able to refer to my citizens by the names \texttt{jonas}, \texttt{abylay} and \texttt{snorre}, in other commands.
+\end{description}\end{description}
+
+
 
 \subsection{As a citizen I want to connect to my governemnt DID}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] my governemnt has a DID published in the file \texttt{../government.did}
+    \item[When] I run \texttt{cat governemnt.did | did connect government}
+    \item[Then] I should be able to refer to the name \texttt{government} in other commands.
+\end{description}\end{description}
 
-```
-GIVEN my governemnt has a DID published as `government.did`
-WHEN  I run `cat governemnt.did | did connect government`
-THEN  I should be able to refer to the name `government` in other commands.
-```
+
 
 \subsection{As government I want issue Passports to my citizens as files}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] my country has 3 citizens 
+    \item[and] I have connected to my citizens
+    \item[When] I run \texttt{did issue Passport jonas > ../jonas.passport.vc.dcem}
+    \item[and] I run \texttt{did issue Passport abylay > ../abylay.passport.vc.dcem}
+    \item[and] I run \texttt{did issue Passport snorre > ../snorre.passport.vc.dcem}
+    \item[Then] All my citizens should have access to a passport issued by me
+    \item[and] one citizen should only be able to use the passport issued to him/her
+    \item[and] one citizen should not be able to use the passport to issued others.
+\end{description}\end{description}
 
-```
-GIVEN I have stored the DIDnames of my citizens
-WHEN  I run `did issue Passport jonas > jonas.passport.vc.dcem`
-AND   I run `did issue Passport abylay > abylay.passport.vc.dcem`
-AND   I run `did issue Passport snorre > snorre.passport.vc.dcem`
-THEN  my citizens passports should be stored as files that can be shared
-AND   the files can only be read by their intended recipient.
-```
+
 
 \subsection{As a citizen I want to hold Passports issued to me}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] my government has issued a Passport to in a file \texttt{../jonas.passport.vc.dcem}
+    \item[When] I run \texttt{cat ../jonas.passport.vc.dcem | did hold}
+    \item[Then] the Passport is stored in my agent as a DCEM.
+\end{description}\end{description}
 
-```
-GIVEN my governemnt has issued a Passport to in a file `jonas.passport.vc.dcem`
-WHEN  I run `cat jonas.passport.vc.dcem | did hold`
-THEN  the Passport is stored in my agent as a DCEM
-AND   and the DCEM can be later refered to by the DCEM.id
-AND   the DCEM can be looked up by using `did messages`.
-```
+
 
 \subsection{As a citizen I want to view my Passport in plaintext}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] I have am holding a Passport as a DCEM with id 1234
+    \item[When] I run \texttt{did message 1234 | did read}
+    \item[Then] my Passport should be written to \texttt{stdout} in plaintext.
+\end{description}\end{description}
 
-```
-GIVEN I have am holding a Passport as a DCEM with id 340340032
-WHEN  I run `did message 340340032 | did read`
-THEN  my Passport should be written to `stdout` in cleartext.
-```
+
 
 \subsection{As a citizen I want to present my Passport to the Police}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] I have am holding a Passport as a DCEM with id 1234
+    \item[and] I have connected a DID to the name \texttt{police}
+    \item[When] I run \texttt{did message 1234 | did present police > ../jonas.passport.vp.dcem}
+    \item[Then] my Passport should be stored in a file as a Verifiable Presentation
+    \item[and] it should only be able to be viewed and verified by \texttt{police}
+    \item[and] nobody else.
+\end{description}\end{description}
 
-```
-GIVEN I have am holding a Passport as a DCEM with id 340340032
-AND   I have connected a DID to the DIDName `police`
-WHEN  I run `did message 340340032 | did present police > jonas.passport.vp.dcem`
-THEN  my Passport should be stored in a file
-AND   it should only be able to be viewed and verified by the `police`.
-```
+
 
 \subsection{As the Police I want to verify a Passport from a citizen I am controlling}
+\begin{description}\begin{description}
+    \item[Given] I am in my agent's directory
+    \item[and] I have approached a citizen which has a agent
+    \item[and] the citizens DID is stored in my agent with name \texttt{jonas}
+    \item[and] the government's DID is stored in my agent with name \texttt{government}
+    \item[and] the citizen presents his passport to me as the file \texttt{../jonas.passport.vp.dcem}
+    \item[When] I run \texttt{cat ../jonas.passport.vp.dcem | did verify Passport government jonas}
+    \item[Then] I can be sure that Verifiable Presentation is of type \texttt{Passport}
+    \item[and] and is issued by the \texttt{government}
+    \item[and] and has a subject of \texttt{jonas}
+\end{description}\end{description}
 
-```
-GIVEN I have approached a citizen which has a agent
-AND   the citizens DID is stored in my agent with name `jonas`
-AND   the governments DID is stored in my agent with name `government`
-AND   the citizen present his passport to me as the file `jonas.passport.vp.dcem`
-WHEN  I run `cat jonas.passport.vp.dcem | did verify government jonas Passport`
-THEN  I can be sure that the Passport is valid, and issued by the `government`.
-```
