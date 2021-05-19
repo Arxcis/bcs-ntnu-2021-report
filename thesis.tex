@@ -1,14 +1,14 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
-\title{DID CLI}
-\shorttitle{DID CLI}
+\title{DID CLI v0.1}
+\shorttitle{DID CLI v0.1}
 \author{Jonas Johan Solsvik}
 \shortauthor{Solsvik}
 \date{CC-BY \ntnuthesisdate}
 
 \addbibresource{thesis.bib}
 
-%\input{glossary.tex} % add glossary and acronym lists before document
+\input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
 
@@ -19,27 +19,22 @@
 %\listoftables
 %\lstlistoflistings
 
-%\printglossary[type=\acronymtype] % Print acronyms
-%\printglossary                    % Print glossary
+\printglossary[type=\acronymtype] % Print acronyms
+\printglossary                    % Print glossary
 
 
 \input{chapters/1-introduction}
 \input{chapters/2-development-process}
 \input{chapters/3-requirements}
-\input{chapters/4-command-line-interface}
-\input{chapters/5-application-architecture}
-\input{chapters/6-source-code}
-\input{chapters/7-decisions}
-\input{chapters/8-reflection}
-\input{chapters/9-critique}
-\input{chapters/10-future-work}
-\input{chapters/11-conclusion}
+\input{chapters/4-application-architecture}
+\input{chapters/5-command-line-interface}
+\input{chapters/6-implementation}
+\input{chapters/7-quality-assurance}
+\input{chapters/8-discussion}
+\input{chapters/9-conclusion}
 
-%\input{chapters/x-usage}
-%\input{chapters/x-structure}
-
-%\chapter*{\bibname}
-%\printbibliography[heading=none]
+\chapter{\bibname}
+\printbibliography[heading=none]
 
 %\appendix
 %\input{appendices/a-appendix.tex}

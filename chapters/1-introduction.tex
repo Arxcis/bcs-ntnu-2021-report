@@ -1,16 +1,18 @@
 \chapter{Introduction}
-\section{Problem domain - Self-Sovereign Identity}
+\section{Problem domain - \acrfull{ssi}}
 
-Self-Sovereign-Identity (SSI) consist of technologies, hosted by well-known standards-organizations such as World Wide Web Consortium [W3C](https://www.w3.org/) and Decentralized Identity Foundation [DIF](https://github.com/decentralized-identity).
+\acrfull{ssi} consist of technologies, hosted by well-known standards-organizations such as \acrfull{w3c} and \acrfull{dif}.
 
-SSI attempts to solve many problems present in today's internet. Decentralized identifiers (DID's) is a core SSI-technology, and it's design goals gives us a hint about which problems SSI is trying to solve:
+\acrshort{ssi} attempts to solve many problems present in today's internet. \acrfull{did}s is a core \acrshort{ssi}-technology, and it's design goals gives us a hint about which problems \acrshort{ssi} is trying to solve:
 
-The three first design goals from [DID - 1.2 Design Goals](https://www.w3.org/TR/did-core/\#design-goals): 
+The three first design goals from \textit{\acrshort{did} Design Goals}\cite{DIDDesignGoals} gives us a hint:
+
 \begin{description}
-    \item[Decentralization:] Eliminate the requirement for centralized authorities or single point failure in identifier management, including the registration of globally unique identifiers, public verification keys, services, and other information.
-    \item[Control:] Give entities, both human and non-human, the power to directly control their digital identifiers without the need to rely on external authorities.
-    \item [Privacy:] Enable entities to control the privacy of their information, including minimal, selective, and progressive disclosure of attributes or other data.
+    \item["Decentralization:] Eliminate the requirement for centralized authorities or single point failure in identifier management, including the registration of globally unique identifiers, public verification keys, services, and other information."
+    \item["Control:] Give entities, both human and non-human, the power to directly control their digital identifiers without the need to rely on external authorities."
+    \item ["Privacy:] Enable entities to control the privacy of their information, including minimal, selective, and progressive disclosure of attributes or other data."
 \end{description}
+
 
 The standards developed within the realm of SSI, are developed as open-source collaborative documents. The documents, when finalized, become specifications which is intended to be used by developers whenementing SSI-applications. To read on, it is highly recommended that you atleast have a surface-level understanding of the following three core SSI-specifications, and how they relate to one another: 
 \begin{description}
@@ -59,7 +61,7 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 
 \section{Goals}
 
-\subsection{Resultatmål}
+\subsection{Result Goals}
 
 \begin{itemize}
 \item Deliver a high-level design document.
@@ -68,14 +70,14 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 \item Develop a discussion about interoperability in the SSI ecosystem.
 \end{itemize}
 
-\subsection{Effektmål}
+\subsection{Effect Goals}
 
 \begin{itemize}
 \item Engage with the broader DIF-community during development.
 \item Educate people about a practical application of SSI technology.
 \end{itemize}
 
-\subsection{Læringsmål}
+\subsection{Learning Goals}
 
 \begin{itemize}
 \item Gain deep understand SSI's layered tech stack - Layer 1 (DID), Layer2 (DIDComm), Layer 3 (VC), Layer 4 (Applications)
@@ -103,7 +105,7 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 
 \subsection{SSI Specification writers}
 \begin{itemize}
-\item Specification writers - people who write the documents that dictate implementations of SSI - are concerned with how beginner-friendly their specifications are.
+\item Specification writers - People who write the documents that dictate implementations of SSI - are concerned with how beginner-friendly their specifications are.
 \item This work may shed some light on how easy it is for new-comers to get started, and may as a result lead to suggested improvements to current specs.
 \end{itemize}
 
@@ -131,38 +133,15 @@ The team working on this project consists of a 1 student, 1 product owner, 2 tec
 \end{table}
 
 
-\section{Report Chapters}
+\section{Chapters Overview}
 
 \begin{description}
-    \item[Chapter 2:] Development Process - How the project was managed.
-    \item[Chapter 3:] Requirements - A list of functional and non-functional requirements of the agent.
-    \item[Chapter 4:] Command-Line Interface - A description of the user-interface of the agent.
-    \item[Chapter 5:] Application Architecture - A description of the high-level design of the agent.
-    \item[Chapter 6:] Source code - Details about the DID-CLI source-code.
-    \item[Chapter 7,8,9,10,11:] Discussion
-
+    \item[Chapter 2:] Development Process - How development of DID CLI was managed.
+    \item[Chapter 3:] Requirements - The functional and non-functional requirements of DID CLI.
+    \item[Chapter 4:] Application Architecture - A description of the high-level design of DID CLI.
+    \item[Chapter 5:] Command-Line Interface - A description of the user-interface of DID CLI.
+    \item[Chapter 6:] Implementation - Details about DID CLI source-code.
+    \item[Chapter 7:] Quality Assurance - How we test and make sure DID CLI does what it is supposed to do. 
+    \item[Chapter 8:] Discussion - What did we decide, learn, think, feel?
+    \item[Chapter 9:] Conclusion - Summary and future work.
 \end{description}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%Over the years, several thesis templates for \LaTeX{} have been developed by different groups at NTNU. Typically, there have been local templates for given study programmes, or different templates for the different study levels – bachelor, master, and \acrshort{phd}.\footnote{see, e.g., \url{https://github.com/COPCSE-NTNU/bachelor-thesis-NTNU} and \url{https://github.com/COPCSE-NTNU/master-theses-NTNU}}
-
-%Based on this experience, the \acrfull{CoPCSE}\footnote{\url{https://www.ntnu.no/wiki/display/copcse/Community+of+Practice+in+Computer+Science+Education+Home}} is hereby offering a template that should in principle be applicable for theses at all study levels. It is closely based on the standard \LaTeX{} \texttt{report} document class as well as previous thesis templates. Since the central regulations for thesis design have been relaxed – at least for some of the historical university colleges now part of NTNU – the template has been simlified and put closer to the default \LaTeX{} look and feel.
-
-%The purpose of the present document is threefold. It should serve (i) as a description of the document class, (ii) as an example of how to use it, and (iii) as a thesis template.

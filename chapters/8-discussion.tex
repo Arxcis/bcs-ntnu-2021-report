@@ -1,0 +1,161 @@
+\chapter{Discussion}
+
+\section{Decisions}
+
+\subsection{Why behaviour-driven-development BDD?}
+
+\begin{itemize}
+\item Own experience from working with BDD out in the field.
+
+\item Dan North, Introduction to BDD, https://dannorth.net/introducing-bdd/
+
+\paragraph{}
+    >If we could develop a consistent vocabulary for analysts, testers, developers, and the business, then we would be well on the way to eliminating some of the ambiguity and miscommunication that occur when technical people talk to business people.
+    
+\paragraph{}
+    >A story’s behaviour is simply its acceptance criteria – if the system fulfills all the acceptance criteria, it’s behaving correctly; if it doesn’t, it isn’t. So we created a template to capture a story’s acceptance criteria.
+\end{itemize}
+
+\begin{lstlisting}[language=text,caption={As a, I want, so what}]
+    As a [X]
+    I want [Y]
+    so that [Z]
+\end{lstlisting}
+
+\begin{lstlisting}[language=text,caption={given, when, then}]
+    Given some initial context (the givens),
+    When an event occurs,
+    then ensure some outcomes.
+\end{lstlisting}
+
+
+
+\subsection{Why Rust?}
+\begin{itemize}
+\item Multiple libraries in the SSI community written in Rust already
+\item The only official implementation of DIDComm v2 is in Rust
+\item Strong typing
+\item Safety/security features eliminates whole classes of bugs:
+    \begin{itemize}
+    \item Memory safety - allocating/freeing
+    \item Boundary safety
+    \item Null pointer safety
+    \end{itemize}
+\item Compiler catches many bugs before run-time
+\item Modern language from this century
+\item Performance like C
+\item Backed by industry champs like Mozilla, Microsoft, Linux Foundation
+\end{itemize}
+
+
+
+\subsection{Why a command line interface - no GUI?}
+
+\begin{itemize}
+\item GUI does not solve our problem statement any better.
+\item A degree in Programming, does not get extra points for design.
+\item Time considered better spent on lower-level stuff.
+\end{itemize}
+
+
+
+\subsection{Why only support a single cryptographic toolkit?}
+\begin{itemize}
+
+    \item Why only support ed25519/x25519 for signing and encryption?
+    \item To limit scope.
+    \item Supporting multiple toolkits, does not solve our problem-statement any better.
+    \item One is enough to prove the point.
+    \item One could rewrite the software to support multiple cryptographic toolkits later, using a plugin-based architecture.
+\end{itemize}
+
+
+
+\subsection{Why only support a single DIDComm transport?}
+\begin{itemize}
+    \item To limit scope.
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Reflection}
+
+\subsection{Joining a large existing open-source community as a complete noob}
+
+I spent some time in the beginning to get in touch with community experts. This resulted in me joining the DIF foundation, to get access to it's Slack-channel, and ask direct questions to the people that know the most about SSI, and it's development, in the world.
+
+\subsection{Learning a new low-level language - Rust}
+
+I had a lot of experience from programming in low-level languages and was surprised on how different it felt to program in Rust compared to C, C++, which are very similar to each other. Rust shows that inovation is still possible in this area, after many years with most innovation happening in higher-level languages.
+
+\subsection{Techniques to overcome writers block}
+\begin{itemize}
+    \item Write something every day, no exceptions. Even if it just a single word. Do not stop ever.
+    \item Allow yourself to write stupid things, and then rewrite. Rewriting is easier than writing.
+    \item Write bullet points.
+    \item Embrace chaos.
+    \item Don't be afraid to delete and move things around.
+\end{itemize}
+
+
+
+\newpage
+
+\subsection{How to talk to regular people about Self-Sovereign Identity?}
+
+A list of concepts regular-people understand:
+\begin{itemize}
+    \item Attester
+    \item Vitnemål
+    \item Kursbevis
+    \item Kontrakter
+    \item ID
+    \item Skjøter
+    \item Titler
+    \item Fødselsattest
+    \item Pass
+    \item BankID
+    \item Førerkort
+    \item Bankkontoer
+    \item Lånebevis
+    \item Penger (cryptocurrency)
+    \item Helsejournal - 200 different countries, 200 different helth care apps?
+    \item Resepter
+    \item ...and more
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\section{Critique}
+
+\subsection{Set up the correct bachelor template earlier}
+
+Most of bachelors in programming follow the same template, presented by Frode Haug in Lynkurs 2. This knowledge was aquired just 2 weeks before deadline. We should have known about this earlier. We would have known about it earlier, if we had watched Lynkurs 2 when it aired on onsdag 3.mars kl. 14.05-15.00 i Lille Eureka. This would have given an two extra months of working with the correct template, which would have been more productive. A big problem early in the report writing, was the lack of overview due to a template which was not suited for the kind of project.
+
+
+
+\subsection{Too little background-knowledge about writing academic reports}
+
+I got the feeling that I should have known a lot more about writing academic papers, before starting on a bachelor project. What should be delivered in a bachelor project is not the code, it is the report. Some background theory about what a report is, and what is expected, and maybe even som practical experience with it, before starting on a bachelor project, would have been much more confortable.
+
+
+
+\subsection{No automated testing}
+
+\begin{itemize}
+    \item Should have had automated testing
+    \item Manual testing is tedious, error-prone, time-consuming.
+    \item A proper framework for testing, should be part of the application architecture
+\end{itemize}
+
