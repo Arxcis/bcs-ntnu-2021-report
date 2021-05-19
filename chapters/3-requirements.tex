@@ -1,208 +1,228 @@
 \chapter{Requirements}
 
-\paragraph{}
 The requirements are developed in a collaborative fashion, between Jonas, Snorre, Mariusz and Abylay, during the weekly technical supervisor meeting.
 
-\section{Non-functional Requirements}
 
+
+\section{Non-functional Requirements}
 \begin{itemize}
-\item The application needs to have a CLI.
-\item No GUI.
-\item Developed in the Rust programming language.
-\item Use existing Rust libraries wherever possible.
-\item Only support one DIDComm transport - stdin/stdout
-\item Only support one DID-method - did-key
-\item Only support one cryptographic-method - x25519/ed25519
+    \item The application needs to have a CLI.
+    \item No GUI.
+    \item Developed in the Rust programming language.
+    \item Use existing Rust libraries wherever possible.
+    \item Only support one DIDComm transport - stdin/stdout
+    \item Only support one DID-method - did-key
+    \item Only support one cryptographic-method - x25519/ed25519
 \end{itemize}
+
+
 
 \section{Functional Requirements Writing Style}
 
-\paragraph{}
 The functional requirement are written with User-Stories as titles and with BDD-style tests as descriptions. BDD-style tests are written in a way that is easy to translate to a code-test. The BDD-style tests are also easy for a human to follow, if a human wants to do a manual test. For an introduction to BDD (Behaviour Driven Development), read Dan North's original post about BDD here: https://dannorth.net/introducing-bdd/.
 
 \paragraph{}
 BDD makes the bridge between requirements, implementation and testing as small as possible, saving time later in the development process. It also makes the gap between technical and non-technical team-members as small as possible, making it possible to iterate on the requirements faster. The people developing requirements may have a wide range of technical skill. BDD is about talking in a "common-denominator" that everyone can understand, and at the same is easy to implement.
 
+
+
 \section{Functional Requirement Layers}
 
-The functional requirements are grouped in the following manner:
+The functional requirements are grouped together in 4 groups. Each group represents a layer in the SSI-stack.
 \begin{description}
-\item[Layer 1:] DID Functional Requirements
-\item[Layer 2:] DIDComm Functional Requirements
-\item[Layer 3:] Verifiable Credentials Functional Requirements
-\item[Layer 4:] Scenario Functional Requirements
+    \item[Layer 1:] DID 
+    \item[Layer 2:] DIDComm
+    \item[Layer 3:] Verifiable Credentials
+    \item[Layer 4:] Application (Scenario)
 \end{description}
 
-Each group represents a layer in the SSI-stack.
 
-\section{Layer 1 - DID Functional Requirements}
+\newpage
 
-\subsection{As a user I want to initiate a DID-agent inside a directory on my machine}
+\section{Functional Requirements Layer 1 - DID}
 
-```
-Scenario 1
 
-GIVEN I am in an empty directory
-WHEN  I run did init
-THEN  my DID should be written to stdout.
-AND   the sub-directory .did/ should be created
-AND   I should be able to refer to my own DID by the name self
-```
+\subsection{As a user I want to create an agent inside a directory on my machine}
+\begin{description}\begin{description}
+    \item[Given] I am in an empty directory
+    \item[When] I run \texttt{did init}
+    \item[Then] an agent should be created in the directory
+    \item[and] all the agent's files should be stored in the sub-directory .did/, like .git/
+    \item[and] the agent's DID should be written to stdout 
+    \item[and] a the DIDName \texttt{self} should be linked to the DID
+    \item[and] the directory is now of the type "agent-directory".
+\end{description}\end{description}
 
-```
-Scenario 2
 
-GIVEN I run `did init`
-WHEN  I run did init again
-THEN  nothing should happen to .did/
-AND   my DID should be written to stdout.
-```
+\subsection{As a user I want to view an agent's DID}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[When] I run \texttt{did init}
+    \item[or] I run \texttt{did did self}
+    \item[Then] the agent's DID should be written to \texttt{stdout}.
+\end{description}\end{description}
 
-*Note: As a user I should never have to know the contents of `.did/`. The only thing I have to care about is that `.did/`, in practice, IS my agent. If I move `.did/` to a different location, it will be like moving my agent to a different location. This should be similar to how `git`-CLI works, which creates the `.git/`-directory when running `git init`.*
 
-\subsection{As a user I want to view my DID}
+\subsection{As a user I want to view an agent's DID document}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[When] I run \texttt{did doc}
+    \item[Then] the agent's DID-document should be written to \texttt{stdout} as prettified JSON.
+\end{description}\end{description}
 
-```
-GIVEN I run `did init`
-WHEN  I run did init
-OR    I run did did self
-THEN  my DID should be written to stdout.
-```
 
-\subsection{As a user I want to view my DID document}
+\subsection{As a user I want to connect a name to a DID}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] I have a DID \texttt{did:key:z6MkjidGmTqu3jG73hVdz5MKEGtVLCLof9ctxTXHMomNcivxA}
+    \item[When] I run \texttt{did connect doctor did:key:z6MkjidGmTqu3jG73hVdz5MKEGtVLCLof9ctxTXHMomNcivx}
+    \item[Then] the name \texttt{doctor} should be stored in the agent
+    \item[and] I should be able to use \texttt{doctor} in other commands, instead of typing the whole underlying DID.
+    \item[and] the name \texttt{doctor} should be written to \texttt{stdout}, to enable chaining together commands.
+\end{description}\end{description}
 
-```
-GIVEN I run `did init`
-WHEN  I run did doc
-THEN  my DID-document should be written to stdout as prettified JSON.
-```
 
-\subsection{As a user I want to store and refer to DIDs by name}
+\subsection{As a user I want to refer to an agent's DID by using the name self}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[When] I run any command. Example: \texttt{did write self hello}
+    \item[Then] I should be able to refer to the agents own DID by the name \textt{self}.
+\end{description}\end{description}
 
-```
-GIVEN I run `did init`
-GIVEN I have a DID `did:key:z6MkjidGmTqu3jG73hVdz5MKEGtVLCLof9ctxTXHMomNcivxA`
-WHEN  I run `did connect doctor did:key:z6MkjidGmTqu3jG73hVdz5MKEGtVLCLof9ctxTXHMomNcivx`
-THEN  the relationship between `doctor` <--> `DID` should be stored in my agent
-AND   I should be able to refer to the DID in other commands, by the name `doctor`
-AND   the name `doctor` should be written to `stdout`
-```
-
-\subsection{As a user I want to refer to my own DID with the name `self`}
-
-```
-GIVEN I run `did init`
-WHEN  I run any command
-THEN  I should be able to refer to my own DID by the name `self`. Example: `did write self hello`.
-```
 
 \subsection{As a user I want to view all my DID's}
-
-```
-GIVEN I run `did init`
-AND   I store some DIDNames in my agent
-WHEN  I run `did dids`
-THEN  a list of all my DIDs and DIDNames should be written to `stdout`.
-```
-
-\subsection{As a user I want to view the DID referred to by a DIDName}
-
-```
-GIVEN I run `did init`
-AND   I store a DIDName `police`
-WHEN  I run `did did police`
-THEN  the DID referred to by `police` should be written to `stdout`.
-```
-
-\section{Layer 2 - DIDComm Functional Requirements}
-
-\subsection{As a user I want to write a DCEM to another agent}
-
-```
-GIVEN I run `did init` in two different directories on my machine
-AND   I have stored the DID of the other agent by the name `other`
-WHEN  I run `did write other hello`
-THEN  a DCEM should be written to `stdout`
-AND   the DCEM should be addressed to the DID referred to by `other`.
-```
-
-*DCEM - DIDComm encrypted Message*
-
-\subsection{As a user I want to read the contents of a DCEM addressed to me}
-
-```
-GIVEN I receive a DCEM-file `hello.dcem`, addressed to my agent
-WHEN  I run `did read \$(cat hello.dcem)` or `cat hello.dcem | did read`
-THEN  the plaintext contents of the DCEM should be written to `stdout`.
-```
-
-\subsection{As a user I want to store (hold) DCEM's inside my agent}
-
-```
-GIVEN I receive a DCEM-file `hello.dcem`, addressed to my agent
-WHEN  I run `did hold \$(cat hello.dcem)` or `cat hello.dcem | did hold`
-THEN  the DCEM should be stored inside my agent, for later usage
-AND   the DCEM should be written to `stdout`.
-```
-
-\subsection{As a user I want to view a list of all my stored DCEM's}
-
-```
-GIVEN my agent is holding 1 or more DCEM's
-WHEN  I run `did messages`
-THEN  a list of all my DCEM's together with their ids, should be written to `stdout`
-```
-
-\subsection{As a user I want to view a single DCEM I am holding}
-
-```
-GIVEN a DCEM's id my agent is holding id is: `7497036273686508746`
-WHEN  I run `did message 7497036273686508746`
-THEN  the DCEM should be written to `stdout`.
-```
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] I there are some DIDNames stored in the agent
+    \item[When] I run \texttt{did dids}
+    \item[Then] a list of all the agent's DIDNames should be written to `stdout`.
+\end{description}\end{description}
 
 
-\section{Layer 3 - Verifiable Credentials Functional Requirements}
-
-\subsection{As an issuer I want to issue a verifiable credentials to a subject}
-
-```
-GIVEN my agent has connected a DID to the name `jonny`
-WHEN  I run `did issue Passport jonny`
-THEN  a DCEM will be written to `stdout`.
-    WITH a Verifiable Credential of type `Passport`
-    WITH `subject.did` of `jonny`
-    WITH `issuer.did` of `self`.
-```
-
-\subsection{As a holder I want to present a verifiable credential as a verifiable presentation to a verifier}
-
-```
-GIVEN my agent has connected a DID to the name `police`
-AND   I have a file with a Verifiable Credential of type `Passport` stored as `passport.vc.dcem`
-WHEN  I run `cat passport.vc.dcem | did present police` or `did present police \$(cat passport.vc.dcem)`
-THEN  a DCEM should be written to `stdout`
-    WITH a Verifiable Presentation of type `Passport`
-    WITH `holder.did` of `self`
-    WITH a Verifiable Credential of type `Passport` addressed to the `police`
-```
-
-\subsection{As a verifier I want to verify a verifiable presentation}
-
-```
-GIVEN my agent has connected a DID to the name `jonny`
-AND   I have connected a DID to the name `police`
-AND   I have a file with a Verifiable Presentation of type `Passport` stored as `passport.vp.dcem`
-WHEN  I run `did verify police jonny Passport Passport` and it succeeds
-THEN  I can trust that the `vc.issuer.did` is `police`,
-AND   the `vc.subject.did` is `jonny`,
-AND   the `vp.type` is `Passport`
-AND   the `vc.type` is `Passport`.
-AND   that `passport.vp.dcem` will be written to `stdout`
-```
+\subsection{As a user I want to view a DIDName's DID}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] the agent has a DIDName \texttt{police}
+    \item[When] I run \texttt{did did police}
+    \item[Then] the DID of \texttt{police} should be written to \texttt{stdout}.
+\end{description}\end{description}
 
 
-\section{Layer 4 - Scenario Functional Requirements}
+\newpage
+
+\section{Functional Requirements Layer 2 - DIDComm}
+
+\subsection{As a user I want to write a DCEM from one agent to another}
+\begin{description}\begin{description}
+    \item[Given] I have two agents on my machine
+    \item[and] I am in one of the agent-directories
+    \item[and] I have stored the DID of the other agent by the name \texttt{other}
+    \item[When] I run \texttt{did write other hello}, with the contents "Hello".
+    \item[Then] a DCEM should be written to \texttt{stdout}
+    \item[and] the DCEM should be addressed to \texttt{other}. 
+\end{description}\end{description}
+
+For more info on DCEM - DIDComm Encrypted Message - see: https://identity.foundation/didcomm-messaging/spec/#didcomm-encrypted-message.
+
+
+
+\subsection{As a user I want to read the contents of a DCEM addressed to an agent}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] I receive a DCEM-file - \texttt{hello.dcem} - addressed to my agent
+    \item[When] I run \texttt{did read \$(cat hello.dcem)} 
+    \item[or] I run \texttt{cat hello.dcem | did read}
+    \item[Then] the plaintext contents of the DCEM should be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\subsection{As a user I want to hold a DCEM inside an agent}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] I receive a DCEM-file - \texttt{hello.dcem} - addressed to my agent
+    \item[When] I run \texttt{did hold \$(cat hello.dcem)} 
+    \item[or] I run \texttt{cat hello.dcem | did hold}
+    \item[Then] the DCEM should be stored inside my agent with the id of the DCEM
+    \item[and] the DCEM should be written to `stdout`.
+\end{description}\end{description}
+
+Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM should overwrite the one already held by the agent.
+
+
+
+\subsection{As a user I want to view a list of all DCEMs an agent is holding}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] the agent is holding multiple DCEMs
+    \item[When] I run \texttt{did messages}
+    \item[Then] a list of all agent's DCEM-ids, should be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\subsection{As a user I want to view a single DCEM an agent is holding}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] there is a DCEM with id \texttt{7497036273686508746}, held by the agent
+    \item[When] I run \texttt{did message 7497036273686508746}
+    \item[Then] the DCEM should be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\newpage
+
+
+
+\section{Functional Requirements Layer 3 - Verifiable Credentials}
+
+
+
+\subsection{As an issuer I want to issue a Verifiable Credential to a subject}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] the agent has connected a DID to the name \texttt{bob}
+    \item[When] I run \texttt{did issue Passport bob}
+    \item[Then] a DCEM with a Verifiable Credential of type \texttt{Passport}, with \texttt{vc.subject.did} of \texttt{bob}, and with \texttt{vc.issuer.did} of \texttt{self}, should be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\subsection{As a holder I want to present a Verifiable presentation to a verifier}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] the agent has connected a DID to the name \texttt{police}
+    \item[and] the agent is holding a Verifiable Credential as a DCEM with id 1234
+    \item[When] I run \texttt{did message 1234 | did present police}
+    \item[or] I run \texttt{did present Passport police \$(did message 1234)}
+    \item[Then] a DCEM with a Verifiable Presentation of type \texttt{Passport}, containing the Verifiable Credential from \texttt{did message 1234}, with \texttt{vp.holder.did} of \texttt{self}, should be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\subsection{As a verifier I want to verify a Verifiable Presentation}
+\begin{description}\begin{description}
+    \item[Given] I am in an agent-directory
+    \item[and] and the agent has connected a DID to the name \texttt{jonny}
+    \item[and] and the agent has connected a DID to the name \texttt{police}
+    \item[and] I have a file with a Verifiable Presentation of type \texttt{Passport}, stored as \texttt{passport.vp.dcem}
+    \item[When] I run \texttt{cat passport.vp.dcem | did verify Passport police jonny}
+    \item[or] I run \texttt{did verify Passport police jonny \$(cat passport.vp.dcem)}
+    \item[and] it succeeds
+    \item[And] I can trust that the\texttt{vp.type} is \texttt{Passport}
+    \item[Then] I can trust that the \texttt{vp.vc.issuer.did} is \textt{police}
+    \item[And] I can trust that the \texttt{vp.vc.subject.did} is \texttt{jonny}
+    \item[And] I the file \texttt{passport.vp.dcem} will be written to \texttt{stdout}.
+\end{description}\end{description}
+
+
+
+\newpage
+
+
+
+\section{Functional Requirements Layer 4 - Scenario}
 
 \subsection{As a citizen I want to publish my DID to a file}
 
