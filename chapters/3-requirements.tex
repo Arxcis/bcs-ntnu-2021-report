@@ -1,15 +1,13 @@
 \chapter{Requirements}
 
-The requirements are developed in a collaborative fashion, between Jonas, Snorre, Mariusz and Abylay, during the weekly technical supervisor meeting.
+Requirements was developed in a collaboration between developers, the product owner \acrshort{din} and other stakeholders.
 
-
-
-\section{Non-functional Requirements}
+\section{Technical Constraints}
 \begin{itemize}
-    \item The application needs to have a CLI.
-    \item No GUI.
-    \item Developed in the Rust programming language.
+    \item Should be implemented in the Rust programming language.
     \item Use existing Rust libraries wherever possible.
+    \item The application needs to shave a CLI.
+    \item No GUI.
     \item Only support one DIDComm transport - stdin/stdout
     \item Only support one DID-method - did-key
     \item Only support one cryptographic-method - x25519/ed25519
@@ -19,12 +17,11 @@ The requirements are developed in a collaborative fashion, between Jonas, Snorre
 
 \section{Functional Requirements Writing Style}
 
-The functional requirement are written with User-Stories as titles and with BDD-style tests as descriptions. BDD-style tests are written in a way that is easy to translate to a code-test. The BDD-style tests are also easy for a human to follow, if a human wants to do a manual test. For an introduction to BDD (Behaviour Driven Development), read Dan North's original post about BDD here: https://dannorth.net/introducing-bdd/.
-
-\paragraph{}
-BDD makes the bridge between requirements, implementation and testing as small as possible, saving time later in the development process. It also makes the gap between technical and non-technical team-members as small as possible, making it possible to iterate on the requirements faster. The people developing requirements may have a wide range of technical skill. BDD is about talking in a "common-denominator" that everyone can understand, and at the same is easy to implement.
+The functional requirement are written with User-Stories as titles and with \acrfull{bdd}-tests as descriptions. \acrshort{bdd}-tests are written in a way that is easy to translate to a code-test. The \acrshort{bdd}-tests are also easy for a human to follow, if a human wants to do a manual test. For an introduction to \acrfull{bdd}, read Dan North's original post about it here: https://dannorth.net/introducing-bdd/.
 
 
+
+\newpage
 
 \section{Functional Requirement Layers}
 

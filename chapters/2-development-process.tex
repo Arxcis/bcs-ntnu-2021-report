@@ -1,33 +1,36 @@
 \chapter{Development Process}
 
+
+
+
 \section{Kanban}
 
-The project was losely driven forward by the Kanban framework. To keep track of progress in a Kanban project the Kanban board is essential.
+The project was loosely driven forward by the Kanban framework. To keep track of progress, the \textit{Kanban board on Github\footnote{https://github.com/DIN-Foundation/bcs-ntnu-2021/projects/1}} is essential.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=1\textwidth]{figures/github-kanban}
-  \caption[Kanban board on Github]{https://github.com/DIN-Foundation/bcs-ntnu-2021/projects/1}
+  \caption{\textit{Screenshot of Kanban board on Github}}
 \end{figure}
 
 \subsection{The 5 columns of the Kanban board}
 
 \begin{description}
     
-    \item[Inbox:] List of tasks which have been thought of, but is lacking details like what needs to be done and when the implementation is supposed to happen. Tasks in backlog are created whenever someone feels like it. There are no requirements to put something in the backlog. The treshold should be as low as possible. Eqaully, the treshold for deleting a backlog-task should be equally low.
+    \item[1. Inbox:] List of tasks which have been thought of, but is lacking details like what needs to be done and when the implementation is supposed to happen. Tasks in backlog are created whenever someone feels like it. There are no requirements to put something in the backlog. The treshold should be as low as possible. Eqaully, the treshold for deleting a backlog-task should be equally low.
     
-    \item[Backlog:] List of tasks that are planned to be implemented in the near future, and have enough details ironed out to make it possible to start the implementation. Tasks are moved from `Inbox` to `Backlog`:
+    \item[2. Backlog:] List of tasks that are planned to be implemented in the near future, and have enough details ironed out to make it possible to start the implementation. Tasks are moved from `Inbox` to `Backlog`:
         \begin{itemize}
             \item After being discussed in the weekly domain-experts meeting.
             \item or after an ad-hoc meeting dedicated to discussing a specific task.
             \item or after the developer has researched/learned something which makes a task "obviously implementable". If a developer does this, it should be clearly communicated in the next weekly domain-experts meeting.
         \end{itemize}
 
-    \item[In Progress:] List of tasks that are in progress. A developer have written words, code or done something else. These tasks should ideally be linked to an open Pull Request on Github with a WIP label on it.
+    \item[3. In Progress:] List of tasks that are in progress. A developer have written words, code or done something else. These tasks should ideally be linked to an open Pull Request on Github with a WIP label on it.
 
-    \item[In Review:] List of tasks where the developer has implemented the task, and is waiting to get a stamp of approval from a second pair of eyes. Approval could be given by the client, supervisor or any of the domain experts. The developer will request review from the specific person which is considered best suited to review the pull request. This specific person will be notified about this on Discord, and via email if necessary.
+    \item[4. In Review:] List of tasks where the developer has implemented the task, and is waiting to get a stamp of approval from a second pair of eyes. Approval could be given by the client, supervisor or any of the domain experts. The developer will request review from the specific person which is considered best suited to review the pull request. This specific person will be notified about this on Discord, and via email if necessary.
 
-    \item[Done] List of task where the pull request linked to the task has been approved and merged into the main branch of the git source tree.
+    \item[5. Done] List of task where the pull request linked to the task has been approved and merged into the main branch of the git source tree.
 
 \end{description}
 
@@ -82,10 +85,10 @@ and a log of what was discussed during the meeting.
     \end{figure}
 
 
-\subsection{Domain experts Weekly - Tuesdays @ 12:30}
+\subsection{Domain Experts Weekly - Tuesdays @ 12:30}
 
     \begin{description}
-        \item[Agenda:] Everything related to the problem domain - SSI. Technical questions. Engineering questions. Community questions.
+        \item[Agenda:] Discussed questions related to the problem-domain \acrshort{ssi} and software engineering. Demonstrated and validated product iterations.
         \item[Attendees:] Jonas, Snorre, Mariusz, Abylay
     \end{description}
 
@@ -95,10 +98,10 @@ and a log of what was discussed during the meeting.
       \caption[Meeting domain experts]{Preparing for "Domain Experts Weekly"-meeting on Google Meet}
     \end{figure}
     
-\subsection{Academic supervisor weekly - Wednesdays @ 14:00}
+\subsection{Academic Supervisor Weekly - Wednesdays @ 14:00}
     
     \begin{description}
-        \item[Agenda:] Everything related to academic writing and organizing the bachelor in general Community questions.
+        \item[Agenda:] Discussed everything related to academic writing and how to organize the project's workflow.
         \item[Attendees:] Jonas, Deepti
     \end{description}
 

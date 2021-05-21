@@ -8,19 +8,22 @@
 {
         name=DID-method,
         plural=DID-methods,
-        description={A specific type of DID}
+        description={A specific type of DID. Each DID-method has it's own implementation of the DID-method operations}
 }
-
 \newglossaryentry{did-method-operations}
 {
         name=DID-method Operations,
         description={Create, resolve, update, deactivate}
 }
-
 \newglossaryentry{did-key}
 {
         name=did:key,
-        description={The simplest DID-method}
+        description={The simplest DID-method. It is based on a cryptographic public-private keypair}
+}
+\newglossaryentry{unix}
+{
+        name=UNIX,
+        description={A programming environment for terminals, with initial release in 1971}
 }
 
 % --------------------
@@ -32,7 +35,18 @@
 \newacronym{dids}{DIDs}{Decentralized Identifiers}
 \newacronym{w3c}{W3C}{World Wide Web Consortium}
 \newacronym{dif}{DIF}{Decentralized Identity Foundation}
+\newacronym{din}{DIN}{Decentralized Identity Norden}
 
 \newacronym{didcomm}{DIDComm}{DIDComm Messaging v2}
 \newacronym{vc}{VC}{Verifiable Credentials}
 \newacronym{vp}{VP}{Verifiable Presentations}
+\newacronym{bdd}{BDD}{Behaviour Driven Development}
+
+\newacronym{dcpm}{DCPM}{DIDComm Plaintext Message}
+\newacronym{dcem}{DCEM}{DIDComm Encrypted Message}
+
+\newacronym{cli}{CLI}{Command Line Interface}
+\newacronym{did-cli}{DID-CLI}{Decentralized Identity Command Line Interface}
+
+\newacronym{stdin}{STDIN}{Unix Standard Input}
+\newacronym{stdout}{STDOUT}{Unix Standard Output}

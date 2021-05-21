@@ -1,19 +1,28 @@
-\chapter{Command-Line Interface}
+\chapter{\acrfull{cli}}
 
-\begin{itemize}
-\item The main way to interact with `did` executeable, is through it's CLI.
-\item Each command follows the same pattern `did <command> <...args>`.
-\item The DID-CLI draws inspiration from the book `The Unix Programming environment` by `Brian W. Kernighan` and `Rob Pike`, 1984.
-\end{itemize}
+The main way to interact with \acrshort{did-cli} is through its \acrfull{cli}. Each command follows the same pattern:
 
-\section{Unix Pipelines Integration}
 
-Many of the commands in the DID-CLI, is designed in a way to easily integrate with existing Unix tools. The most important part of this integration, is to support optionally reading input from `stdin`. Also it is important to take care in how output is written to `stdout`, to make it possible to chain commands together. This is the reason you will see that most of commands are standardized to write full DCEM-messages to `stdout`, for easy consumption by the next command in the pipeline.
+\begin{lstlisting}
+did <command> <...args>.
+\end{lstlisting}
 
-*Example:*
-```
+
+\section{\gls{unix} \acrshort{cli}}
+
+@TODO Cite `The Unix Programming environment` by `Brian W. Kernighan` and `Rob Pike`, 1984, was used as a guideline for how to design a proper Unix \acrshort{cli}.
+
+
+
+\section{\gls{unix} Pipelines}
+
+\paragraph{}
+Many of the commands in the \acrshort{did-cli}, is designed in a way to easily integrate with existing Unix tools. The most important part of this integration, is to support optionally reading input from \acrfull{stdin}. Also it is important to take care in how output is written to \acrfull{stdout}, to make it possible to chain commands together. This is the reason you will see that most of commands are standardized to write full \acrshort{dcem}-messages to \acrshort{stdout}, for easy consumption by the next command in the pipeline.
+
+
+\begin{lstlisting}
 cat message.dcem | did read | grep jonas 
-```
+\end{lstlisting}
 
 \newpage
 
