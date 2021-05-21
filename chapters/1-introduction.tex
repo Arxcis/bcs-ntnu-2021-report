@@ -1,27 +1,104 @@
 \chapter{Introduction}
+
+
+
 \section{Problem domain - \acrfull{ssi}}
 
-\acrfull{ssi} consist of technologies, hosted by well-known standards-organizations such as \acrfull{w3c} and \acrfull{dif}.
+\acrfull{ssi} is a collection of technologies, developed by well-known standards-organizations such as \acrfull{w3c} and \acrfull{dif}.
 
-\acrshort{ssi} attempts to solve many problems present in today's internet. \acrfull{did}s is a core \acrshort{ssi}-technology, and it's design goals gives us a hint about which problems \acrshort{ssi} is trying to solve:
+\paragraph{}
+The standards developed within the realm of SSI, are open-source collaborative documents. The documents, when finalized, become specifications which is intended to be used by developers implementing SSI-applications. 
 
-The three first design goals from \textit{\acrshort{did} Design Goals}\cite{DIDDesignGoals} gives us a hint:
-
+\paragraph{}
+\acrfull{dids} is a core \acrshort{ssi}-technology, and it's \textit{design goals}\cite{DIDDesignGoals} gives us a hint about which problems \acrshort{ssi} is trying to solve:
 \begin{description}
     \item["Decentralization:] Eliminate the requirement for centralized authorities or single point failure in identifier management, including the registration of globally unique identifiers, public verification keys, services, and other information."
     \item["Control:] Give entities, both human and non-human, the power to directly control their digital identifiers without the need to rely on external authorities."
     \item ["Privacy:] Enable entities to control the privacy of their information, including minimal, selective, and progressive disclosure of attributes or other data."
 \end{description}
 
+\paragraph{}
+To understand this work, you should at least have a surface-level understanding of the following three core SSI-specifications - \acrfull{dids}, \acrfull{didcomm} and \acrfull{vc} - and how they relate to one another.
 
-The standards developed within the realm of SSI, are developed as open-source collaborative documents. The documents, when finalized, become specifications which is intended to be used by developers whenementing SSI-applications. To read on, it is highly recommended that you atleast have a surface-level understanding of the following three core SSI-specifications, and how they relate to one another: 
+\newpage
+
+
+
+
+\subsection{\acrfull{dids}} 
+
+According to \textit{DID Use Cases}\cite{DIDUseCases}, a \acrshort{did} is "a new type of identifier that has 4 essential characteristics:"
 \begin{description}
-    \item [Descentralized Identifiers (DIDs) v1.0:] How to create and control decentralized, digital agents, represented by a globally unique identifier called a `DID` - https://www.w3.org/TR/did-core/
-    \item [DIDComm messaging v2:] How `DID`-agents should communicate with each other - https://identity.foundation/didcomm-messaging/spec/ 
-    \item [Verifiable Credentials Data Model 1.0:] How `DID`-agents issue verifiable claims about the attributes of each other and their relationships - https://www.w3.org/TR/vc-data-model/ 
+    \item["1. decentralized:] There should be no central issuing agency;"
+    \item["2. persistent:] The identifier should be inherently persistent, not requiring the continued operation of an underling organization;"
+    \item["3. cryptographically verifiable:] It should be possible to prove control of the identifier cryptographically"
+    \item["4. resolvable:] It should be possible to discover metadata about the identifier.
 \end{description}
+    
+\paragraph{}
+There are many different types of \acrshort{dids} that fit these characteristics. A specific type of \acrshort{did} is called a \gls{did-method}\cite{DIDMethod}. Each \gls{did-method} provides a unique specification on how to perform the different \gls{did-method-operations}\cite{DIDMethodOperations} - Create, Resolve, Update, Deactivate. 
 
-All of these specifications are work-in-progress as of today - 2021-05-06 - and thus are subject to change, though they are considered stable enough for the SSI-community to have started developing serious applications based on them.
+\paragraph{}
+The simplest \gls{did-method} is called \gls{did-key}\cite{DIDKey}. \gls{did-key} is created by generating a cryptographic public-private keypair on your machine, and using the public part of the keypair as a base for the DID.
+
+\begin{lstlisting}[caption={Example of a \gls{did-key}}]
+did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH  <--- Public key
+\end{lstlisting}
+
+If you stumble upon a \acrshort{did} in the wild, it should be easy to recognize it as a \acrshort{did}, because they all share the same signature.
+
+\begin{lstlisting}[caption={DID-signature}]
+did:<method>:<unique method-specific string of characters>
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Depending on the DID-method, different DIDs may look very different from each other.}]
+did:elem:EiAS3mqC4OLMKOwcz3ItIL7XfWduPT7q3Fa4vHgiCfSG2A
+did:github:Caranty
+did:web:identity.foundation
+did:key:z6MkmjY8GnV5i9YTDtPETC2uUAW6ejw3nk5mXF5yci5ab7th
+did:sov:WRfXPg8dantKVubE3HX8pw
+
+\end{lstlisting}
+
+As of time of writing all these \acrshort{dids} are verified to be resolveable, and you should be able to resolve them by copy-pasting them into \textit{https://dev.uniresolver.io/\cite{UniversalResolver}}.
+
+\newpage
+
+
+
+
+\subsection{\acrfull{didcomm}}
+
+How \acrshort{did}-agents establish connections and pass messages with each other.
+
+
+Example of a DIDComm message \footnote{https://identity.foundation/didcomm-messaging/spec/\#plaintext-message-structure}:
+\begin{lstlisting}[language=json]
+{
+    "id": "1234567890",
+    "type": "<message-type-uri>",
+    "from": "did:example:alice",
+    "to": ["did:example:bob"],
+    "created_time": 1516269022,
+    "expires_time": 1516385931,
+    "body": {
+    	"messagespecificattribute": "and its value"
+    }
+}
+\end{lstlisting}
+
+\newpage
+
+
+
+
+\subsection{\acrfull{vc}} 
+
+How \acrshort{did}-agents issue verifiable claims about the attributes of each other and their relationships - https://www.w3.org/TR/vc-data-model/ 
+
+\newpage
+
+
 
 \section{Problem Scope - Agent software} 
 \begin{itemize}
@@ -59,6 +136,8 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 >Statens Vegvesen wants the application to follow open standards which will enable the application to be agnostic about where and how credentials are issued, stored and verified. In other words Statens Vegvesen want to avoid the application to be locked to a specific ledger and a specific wallet.
 
 
+
+
 \section{Goals}
 
 \subsection{Result Goals}
@@ -88,6 +167,8 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 
 
 
+
+
 \section{Target audience}
 
 \subsection{Government institutions}
@@ -111,6 +192,8 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 
 
 
+
+
 \section{Team Roles}
 
 The team working on this project consists of a 1 student, 1 product owner, 2 tech supervisors and 1 academic supervisor.
@@ -131,6 +214,8 @@ The team working on this project consists of a 1 student, 1 product owner, 2 tec
     \hline
   \end{tabular}
 \end{table}
+
+
 
 
 \section{Chapters Overview}
