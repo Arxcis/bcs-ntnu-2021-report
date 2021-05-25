@@ -1,36 +1,43 @@
-\chapter{Requirements}
+\chapter{Functional Requirements}
 
-Requirements was developed in a collaboration between developers, the product owner \acrshort{din} and other stakeholders.
+This chapter contains a detailed analysis of the functional requirements of \acrshort{did-cli}.
 
-\section{Technical Constraints}
-\begin{itemize}
-    \item Should be implemented in the Rust programming language.
-    \item Use existing Rust libraries wherever possible.
-    \item The application needs to shave a CLI.
-    \item No GUI.
-    \item Only support one DIDComm transport - stdin/stdout
-    \item Only support one DID-method - did-key
-    \item Only support one cryptographic-method - x25519/ed25519
-\end{itemize}
+\section{A fantasy problem statement}
+
+\paragraph{}
+To motivate the development of \acrshort{did-cli}'s requirements we want to define a real-world problem which \acrshort{did-cli} should be the solution to. The real-world problem depicted below is just for demonstration purposes and not an actual problem:
+
+\paragraph{}
+\textit{The norwegian drivers license issuer, Statens Vegvesen, is considering to start issuing it's drivers licenses as \acrfull{vc}s. Statens Vegvesen is not sure if \acrshort{vc}s are the future yet, but are willing to try and dip it's toes into the water.}
+
+\paragraph{}
+\textit{What Statens Veivesen want is a proof-of-concept to be developed, which will issue, hold and verify driver-licenses as \acrfull{vc}s. The proof-of-concept should demonstrate how it handles a situation were a driver is pulled over by the police.}
 
 
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=.65\textwidth]{figures/politikontrollnrk.jpg}
+      \caption[]{Driver pulled over by the police - nrk.no}
+    \end{figure}
 
-\section{Functional Requirements Writing Style}
-
-The functional requirement are written with User-Stories as titles and with \acrfull{bdd}-tests as descriptions. \acrshort{bdd}-tests are written in a way that is easy to translate to a code-test. The \acrshort{bdd}-tests are also easy for a human to follow, if a human wants to do a manual test. For an introduction to \acrfull{bdd}, read Dan North's original post about it here: https://dannorth.net/introducing-bdd/.
 
 
 
 \newpage
 
+\section{Functional Requirements Writing Style}
+
+The functional requirement are written with User-Stories templates as titles and with \acrfull{bdd} templates as descriptions.
+
+
 \section{Functional Requirement Layers}
 
-The functional requirements are grouped together in 4 groups. Each group represents a layer in the SSI-stack.
+The functional requirements are grouped together in 4 groups. Each group represents a layer in the \acrshort{ssi}-stack.
 \begin{description}
-    \item[Layer 1:] DID 
-    \item[Layer 2:] DIDComm
-    \item[Layer 3:] Verifiable Credentials
-    \item[Layer 4:] Application (Scenario)
+    \item[Layer 1:] \acrfull{did}
+    \item[Layer 2:] \acrfull{didcomm}
+    \item[Layer 3:] \acrfull{vc}
+    \item[Layer 4:] Application (User story)
 \end{description}
 
 

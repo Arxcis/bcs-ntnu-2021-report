@@ -2,14 +2,15 @@
 
 
 
-\section{Problem domain - \acrfull{ssi}}
-
-\acrfull{ssi} is a collection of technologies, developed by well-known standards-organizations such as \acrfull{w3c} and \acrfull{dif}.
+\section{Project domain - \acrfull{ssi}}
 
 \paragraph{}
-The standards developed within the realm of SSI, are open-source collaborative documents. The documents, when finalized, become specifications which is intended to be used by developers implementing SSI-applications. 
+On April 25th 2016, Chirstopher Allen launched a blog-post laying out his vision for the future of digital identity titled "The Path to Self-Sovereign Identity"\cite{ThePathToSelfSovereignIdentity}. 
 
-\paragraph{}
+Allen's vision sees \acrfull{ssi} as the final step in the evolution of digital identity: "The models for online identity have advanced through four broad stages since the advent of the Internet: centralized identity, federated identity, user-centric identity, and self-sovereign identity."\cite{ThePathToSelfSovereignIdentity}
+
+In the following years a whole array of new open-source technologies have initiated research and development into realizing Allen's vision. 
+
 \acrfull{dids} is a core \acrshort{ssi}-technology, and it's \textit{design goals}\cite{DIDDesignGoals} gives us a hint about which problems \acrshort{ssi} is trying to solve:
 \begin{description}
     \item["Decentralization:] Eliminate the requirement for centralized authorities or single point failure in identifier management, including the registration of globally unique identifiers, public verification keys, services, and other information."
@@ -18,7 +19,7 @@ The standards developed within the realm of SSI, are open-source collaborative d
 \end{description}
 
 \paragraph{}
-To understand this work, you should at least have a surface-level understanding of the following three core SSI-specifications - \acrfull{dids}, \acrfull{didcomm} and \acrfull{vc} - and how they relate to one another.
+To understand this work, you should at least have a surface-level understanding of the following three core SSI-technologies - \acrfull{dids}, \acrfull{didcomm} and \acrfull{vc} - and how they relate to one another. This chapter will give you a brief summary of all three of them, beginning with \acrshort{dids}:
 
 \newpage
 
@@ -101,47 +102,28 @@ How \acrshort{did}-agents issue verifiable claims about the attributes of each o
 
 
 
-\section{Problem Scope - Agent software} 
+\section{Project Scope - Wallet software} 
 \begin{itemize}
-    \item Within the SSI space, there is a need to develop a specific type of software, called an agent.
-    \item An agent is a piece of software which implements protocols defined by the different SSI-specifications.
-    \item If an agent follows the specifications correctly, it should be able to communicate interoperably with other agents.
-    \item Currently there are SSI-agent-implementations in Python, C#, Javascript, Rust, Golang, and probably more, and they should in theory be interoperable with each other. 
-    \item From now on, the term "agent" strictly used to refer to an SSI-agent, NOT web-browser-agent.
-    \item Each type of agent implements a different subset of SSI protocols. This is because different agents are made to solve different problems within the SSI problem domain.
-    \item For instance a "Wallet", is a specific kind of agent, used to store and manage personal credentials.
+    \item Within the SSI space, there is a need to develop a specific type of software, called a wallet.
+    \item An wallet is a piece of software which implements protocols defined by the different SSI-specifications.
+    \item If a wallet follows the specifications correctly, it should be able to communicate interoperably with other wallets.
+    \item Currently there are known wallet-implementations in Python, C#, Javascript, Rust, Golang.
+    \item Each type of wallet implements a different subset of SSI protocols. This is because different wallets are made for different use cases.
 \end{itemize}
 
-\paragraph{}
-Note: There are many similarities between SSI-agents and web-browser-agents. All web-browsers are interoperable with each other (most of the time), because they are using the same underlying open-source, standardized web-technologies. SSI-agents and web-browser-agents differ in their problem domain, and are not intended to be interoperable with each other.
+
+
+\section{Project Initiator - \gls{diwala}}
+
+Diwala is this projects initiator, represented by Snorre Lothar von Gohren. He is the CTO  & Co-Founder of Diwala, which is a for-profit company set out to "build an ecosystem of digital skill identities with verifiable credentials"\cite{DiwalaAbout}.
 
 
 
-\section{Product Owner - \acrfull{din}}
+\section{Project Description}
 
-Decentalized Identity Norden, or DIN, is a non-profit organization devoted to promote decentralized identity in a nordic context, and highlight the consequences this may have for individuals and society as a whole. For more info see: https://www.din.foundation/om. This work has been developed within the DIN organization.
-
-
-
-\section{Project motivation}
-
-DIN wants the project to implement a proof-of-concept agent. The proof-of-concept agent should solve a specific scenario which is relevant to DIN's agenda. The demonstration of solving a specific scenario should inspire and educate people about real-world use-cases of decentralized identity (aka self-sovereign identity).
+"The project ambition is to build a proof with the existing wallet standards, that it is possible to establish an open and interoperable identity wallet. Or even prove that this is not possible at this moment, because of the lack of certain standards. As part of the bachelor project team will develop a set of proof-of-concept reference implementations that can showcase the interoperability within the existing frameworks and tools that are already out there. Set together the needed pieces to prove that interoperability is possible. The reference implementation of the proof-of-concept, will prove that the user will be able to seamlessly respond to different service proof requests and issuance requests, and to be able to migrate credentials and other user-centric data stored in the users control. The work will begin with existing open source frameworks, as well as closed source service providers with good developer portals for easy testing and verification. The project is language and platform agnostic. The biggest benefit in this is to showcase that the proclaimed panacea for digital identity, is actually possible. This work will rapport on hinders, benefits and possibilities with this ecosystem, and the importance of interoperability" \cite{ProjectDescription} - \textit{Diwala}
 
 
-
-\newpage
-
-\section{Project Scenario}
-
-The proof-of-concept agent should be able to demonstrate the following scneario.
-
->The norwegian driver license issuer, Statens Vegvesen, is considering to start issuing it's driver licenses as verifiable credentials (VCs). Statens Vegvesen is not sure if verifiable credentials is the future yet, but are willing to try and dip it's toes in the water. Statens vegvesen will still issue credentials in the traditional way for the forseeable future.
-
->What Statens Veivesen want is a proof-of-concept SSI-application which will issue, hold and verify driver-licenses. They are hoping that this will bootstrap SSI in Norway, as this will enable other individuals and organizations to start experimenting with holding and verifying a serious credentials which actually are useful.
-
->The proof-of-concept may demonstrate, that a driver license as a verifiable credential could be considered on par, legally speaking, with traditional driver licenses.
-
->Statens Vegvesen wants the application to follow open standards which will enable the application to be agnostic about where and how credentials are issued, stored and verified. In other words Statens Vegvesen want to avoid the application to be locked to a specific ledger and a specific wallet.
 
 
 
@@ -151,27 +133,20 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 \subsection{Result Goals}
 
 \begin{itemize}
-\item Develop the application as an open-source project inside DIN-Foundation's Github organization, which solves the scenario.
-\item Present and demonstrate that the application implemented solves the scenario.
+\item Develop the \acrshort{cli}-application which solves the problem scenario.
+\item Demonstrate that the application implemented solves the scenario.
 \item Develop a discussion about interoperability in the SSI ecosystem.
-\end{itemize}
-
-\subsection{Effect Goals}
-
-\begin{itemize}
-\item ?
 \end{itemize}
 
 \subsection{Learning Goals}
 
 \begin{itemize}
+\item Figure out if Rust a good choice for developing SSI CLI applications.
 \item Gain deep understand SSI's layered tech stack - Layer 1 (DID), Layer2 (DIDComm), Layer 3 (VC), Layer 4 (Applications)
 \item Gain hands-on experience with developing a SSI agent.
 \item Learn a new programming language like Rust.
-\item Learn how to work on a project 100% remotely from start to finish.
+\item Learn how to work on a project 100\% remotely from start to finish.
 \end{itemize}
-
-
 
 
 
@@ -194,6 +169,24 @@ The proof-of-concept agent should be able to demonstrate the following scneario.
 \begin{itemize}
 \item Specification writers - People who write the documents that dictate implementations of SSI - are concerned with how beginner-friendly their specifications are.
 \item This work may shed some light on how easy it is for new-comers to get started, and may as a result lead to suggested improvements to current specs.
+\end{itemize}
+
+
+
+\section{Technical Constraints}
+
+Some technical constraints for the proof-of-concept implementation:
+
+\begin{itemize}
+    \item Should be implemented in the Rust programming language.
+    \item Use existing Rust libraries wherever possible.
+    \item The application needs to shave a CLI.
+    \item No GUI.
+    \item Only support one DIDComm transport - stdin/stdout
+    \item Only support one DID-method - did-key
+    \item Only support one cryptographic-method - x25519/ed25519
+    \item The source code should be open-source.
+    \item The source code should be hosted by \acrshort{DIN}-Foundation's Github organization.
 \end{itemize}
 
 
@@ -224,6 +217,10 @@ The team working on this project consists of a 1 student, 1 product owner, 2 tec
 
 
 \newpage
+
+\section{Proof-of-concept - \acrshort{did-cli}}
+
+The project description demands that a proof-of-concept wallet should be developed. This proof-of-concept wallet will now be referred to as \acrfull{did-cli}. Chapter 2-7 are dedicated to describe how \acrshort{did-cli} was developed. Chapter 8-9 tries to take a step back again and answers the more general questions and goals set out by the project description.
 
 \section{Chapters Overview}
 
