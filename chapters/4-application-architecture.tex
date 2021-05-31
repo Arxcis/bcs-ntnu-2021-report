@@ -9,14 +9,14 @@
 \item A DID is the unique identifier of an agent.
 \item DID's can resolve to a DID Document.
 \item The DID-method decides the details on how to resolve the DID-document.
-\item DID data model -> https://www.w3.org/TR/did-core/#data-model
+\item DID data model -> https://www.w3.org/TR/did-core/\#data-model
 \end{itemize}
 
 
 
 \subsection{DIDKey method}
 
-DIDKey is the only DID-method we are supporting. DID method key format -> https://w3c-ccg.github.io/did-method-key/#format
+DIDKey is the only DID-method we are supporting. DID method key format -> https://w3c-ccg.github.io/did-method-key/\#format
 
 
 
@@ -45,7 +45,7 @@ The JWK DID-CLI is supporting, is a `ed25519/x25519` cryptographic public-privat
 }
 \end{lstlisting}
 
-JWK format -> https://datatracker.ietf.org/doc/html/rfc7517#section-4.1
+JWK format -> https://datatracker.ietf.org/doc/html/rfc7517\#section-4.1
 
 
 
@@ -53,7 +53,7 @@ JWK format -> https://datatracker.ietf.org/doc/html/rfc7517#section-4.1
 
 All messages read and written by the agent, are serialized as DIDComm Encrypted Messages, both in transit, and when at stored at rest inside the agent, as files.
 
-DCEM spec -> https://identity.foundation/didcomm-messaging/spec/#didcomm-encrypted-message
+DCEM spec -> https://identity.foundation/didcomm-messaging/spec/\#didcomm-encrypted-message
 
 
 
@@ -64,7 +64,7 @@ All credentials issued by DID CLI are serialized as Verifiable Credentials.
     \begin{figure}[htbp]
       \centering
       \includegraphics[width=.7\textwidth]{figures/credential.png}
-      \caption[]{Illustration from https://www.w3.org/TR/vc-data-model/#credentials}
+      \caption[]{Illustration from https://www.w3.org/TR/vc-data-model/\#credentials}
     \end{figure}
 
 
@@ -78,7 +78,7 @@ All presentations presented by DID CLI are serialized as Verifiable Presentation
     \begin{figure}[htbp]
       \centering
       \includegraphics[width=.7\textwidth]{figures/presentation.png}
-      \caption[]{Illustration from https://www.w3.org/TR/vc-data-model/#presentations}
+      \caption[]{Illustration from https://www.w3.org/TR/vc-data-model/\#presentations}
     \end{figure}
     
 

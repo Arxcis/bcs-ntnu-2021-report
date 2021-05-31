@@ -6,10 +6,10 @@ The source code is following the "guidelines for binary projects", given by the 
 
 
 \paragraph{}
->### Separation of Concerns for Binary Projects
+> Separation of Concerns for Binary Projects
 
 \paragraph{}
->The organizational problem of allocating responsibility for multiple tasks to the main function is common to many binary projects. As a result, the Rust community has developed a process to use as a guideline for splitting the separate concerns of a binary program when main starts getting large. The process has the following steps:
+> The organizational problem of allocating responsibility for multiple tasks to the main function is common to many binary projects. As a result, the Rust community has developed a process to use as a guideline for splitting the separate concerns of a binary program when main starts getting large. The process has the following steps:
 
 
 \paragraph{}
@@ -33,7 +33,7 @@ The source code is following the "guidelines for binary projects", given by the 
 >This pattern is about separating concerns: main.rs handles running the program, and lib.rs handles all the logic of the task at hand. Because you can’t test the main function directly, this structure lets you test all of your program’s logic by moving it into functions in lib.rs. The only code that remains in main.rs will be small enough to verify its correctness by reading it. Let’s rework our program by following this process.
 
 \paragraph{}
-Ref: https://doc.rust-lang.org/book/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects
+Ref: https://doc.rust-lang.org/book/ch12-03-improving-error-handling-and-modularity.html\#separation-of-concerns-for-binary-projects
 
 
 \subsection{File structure}
