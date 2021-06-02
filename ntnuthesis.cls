@@ -369,3 +369,9 @@
                 {|}{{\textcolor{red}\textbar}}1 
                 {\ -\ }{{\mdseries\ -\ }}3,
 }
+
+% Add identation support for "description"-enviornment: See: https://tex.stackexchange.com/a/9761
+\renewenvironment{description}[1][0pt]
+  {\list{}{\labelwidth=0pt \leftmargin=#1
+   \let\makelabel\descriptionlabel}}
+  {\endlist}

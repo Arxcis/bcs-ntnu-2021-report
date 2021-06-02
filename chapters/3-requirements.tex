@@ -41,6 +41,7 @@ The functional requirements are grouped together in 4 groups. Each group represe
 \end{description}
 
 
+
 \newpage
 
 \section{Functional Requirements Layer 1 - DID}
@@ -117,7 +118,8 @@ The functional requirements are grouped together in 4 groups. Each group represe
 \section{Functional Requirements Layer 2 - DIDComm}
 
 \subsection{As a user I want to write a DCEM from one agent to another}
-\begin{description}
+
+\begin{description}[1.35cm]
     \item[Given] I have two agents on my machine
     \item[and] I am in one of the agent-directories
     \item[and] I have stored the DID of the other agent by the name \texttt{other}
@@ -131,7 +133,7 @@ For more info on DCEM - DIDComm Encrypted Message - see: https://identity.founda
 
 
 \subsection{As a user I want to read the contents of a DCEM addressed to an agent}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] I receive a DCEM-file - \texttt{hello.dcem} - addressed to my agent
     \item[When] I run \texttt{did read \$(cat hello.dcem)} 
@@ -142,7 +144,7 @@ For more info on DCEM - DIDComm Encrypted Message - see: https://identity.founda
 
 
 \subsection{As a user I want to hold a DCEM inside an agent}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] I receive a DCEM-file - \texttt{hello.dcem} - addressed to my agent
     \item[When] I run \texttt{did hold \$(cat hello.dcem)} 
@@ -156,7 +158,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a user I want to view a list of all DCEMs an agent is holding}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] the agent is holding multiple DCEMs
     \item[When] I run \texttt{did messages}
@@ -166,7 +168,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a user I want to view a single DCEM an agent is holding}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] there is a DCEM with id \texttt{7497036273686508746}, held by the agent
     \item[When] I run \texttt{did message 7497036273686508746}
@@ -184,7 +186,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As an issuer I want to issue a Verifiable Credential to a subject}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] the agent has connected a DID to the name \texttt{bob}
     \item[When] I run \texttt{did issue Passport bob}
@@ -194,7 +196,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a holder I want to present a Verifiable presentation to a verifier}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] the agent has connected a DID to the name \texttt{police}
     \item[and] the agent is holding a Verifiable Credential as a DCEM with id 1234
@@ -206,7 +208,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a verifier I want to verify a Verifiable Presentation}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in an agent-directory
     \item[and] and the agent has connected a DID to the name \texttt{jonny}
     \item[and] and the agent has connected a DID to the name \texttt{police}
@@ -231,7 +233,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a citizen I want to publish my DID to a directory other citizens can access}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[When] I run \texttt{did init > ../jonas.did}
     \item[or] I run \texttt{did did self > ../jonas.did}
@@ -241,7 +243,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a government I want to connect to my citizens' agents}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] my citizens each have their own agents
     \item[and] each citizen have published their DID as files \texttt{../snorre.did}, \texttt{abylay.did}, \texttt{jonas.did}
@@ -254,7 +256,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a citizen I want to connect to my governemnt DID}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] my governemnt has a DID published in the file \texttt{../government.did}
     \item[When] I run \texttt{cat governemnt.did | did connect government}
@@ -264,7 +266,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As government I want issue Passports to my citizens as files}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] my country has 3 citizens 
     \item[and] I have connected to my citizens
@@ -279,7 +281,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a citizen I want to hold Passports issued to me}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] my government has issued a Passport to in a file \texttt{../jonas.passport.vc.dcem}
     \item[When] I run \texttt{cat ../jonas.passport.vc.dcem | did hold}
@@ -289,7 +291,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a citizen I want to view my Passport in plaintext}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] I have am holding a Passport as a DCEM with id 1234
     \item[When] I run \texttt{did message 1234 | did read}
@@ -299,7 +301,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As a citizen I want to present my Passport to the Police}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] I have am holding a Passport as a DCEM with id 1234
     \item[and] I have connected a DID to the name \texttt{police}
@@ -312,7 +314,7 @@ Note: If an existing DCEM has id=4, and a new DCEM also has id=4, then new DCEM 
 
 
 \subsection{As the Police I want to verify a Passport from a citizen I am controlling}
-\begin{description}
+\begin{description}[1.35cm]
     \item[Given] I am in my agent's directory
     \item[and] I have approached a citizen which has a agent
     \item[and] the citizens DID is stored in my agent with name \texttt{jonas}

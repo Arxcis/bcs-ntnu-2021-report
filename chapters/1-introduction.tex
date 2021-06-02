@@ -2,7 +2,7 @@
 
 
 
-\section{Project domain - \acrfull{ssi}}
+\section{Project domain - Self-Sovereign Identity (SSI)}
 
 \paragraph{}
 On April 25th 2016, Chirstopher Allen launched a blog-post laying out his vision for the future of digital identity titled "The Path to Self-Sovereign Identity"\cite{ThePathToSelfSovereignIdentity}. 
@@ -26,7 +26,7 @@ To understand this work, you should at least have a surface-level understanding 
 
 
 
-\subsection{\acrfull{dids}} 
+\subsection{Decentralized Identifiers (DIDs)} 
 
 According to \textit{DID Use Cases}\cite{DIDUseCases}, a \acrshort{did} is "a new type of identifier that has 4 essential characteristics:"
 \begin{description}
@@ -63,12 +63,11 @@ did:sov:WRfXPg8dantKVubE3HX8pw
 
 As of time of writing all these \acrshort{dids} are verified to be resolveable, and you should be able to resolve them by copy-pasting them into \textit{https://dev.uniresolver.io/\cite{UniversalResolver}}.
 
+
+
 \newpage
 
-
-
-
-\subsection{\acrfull{didcomm}}
+\subsection{DIDComm}
 
 How \acrshort{did}-agents establish connections and pass messages with each other.
 
@@ -92,9 +91,7 @@ The encrypted variant of \acrfull{dcpm} is called \acrfull{dcem}\footnote{https:
 
 
 
-\newpage
-
-\subsection{\acrfull{vc}} 
+\subsection{Verifiable Credentials (VCs)} 
 
 How \acrshort{did}-agents issue verifiable claims about the attributes of each other and their relationships - https://www.w3.org/TR/vc-data-model/ 
 
@@ -102,7 +99,7 @@ How \acrshort{did}-agents issue verifiable claims about the attributes of each o
 
 
 
-\section{Agents and Wallets}
+\section{Project Scope - Agents and Wallets}
 
 Within the \acrshort{ssi}-community there are two pieces of software that is talked about a lot - agents and wallets.
 
@@ -130,7 +127,10 @@ In any \acrshort{ssi} discussion these two terms may be used interchangeably abo
 
 
 
-\section{Project Initiator - \gls{diwala}}
+
+\newpage
+
+\section{Project Initiator - Diwala}
 
 Diwala is this projects initiator, represented by Snorre Lothar von Gohren. He is the CTO \& Co-Founder of Diwala, which is a for-profit company set out to "build an ecosystem of digital skill identities with verifiable credentials"\cite{DiwalaAbout}.
 
@@ -147,18 +147,23 @@ Snorre also founded \acrfull{din} - a network of organizations which "works to p
 
 \section{Goals}
 
+Based on the projects description it is useful to derive a list of goals for the project:
+
 \begin{itemize}
-    \item 
+    \item Build a proof-of-concept \acrshort{ssi}-application that solves a real-world problem.
+    \item Prove that the application is interoperable.
 \end{itemize}
 
+\section{Constraints}
 
-\section{Target audience}
+\subsection{Organizational Constraints}
 
-?
+\begin{itemize}
+    \item Source-code should be open-source.
+    \item Source-code should be hosted by DIN-Foundation.
+\end{itemize}
 
-
-\section{Technical Constraints}
-
+\subsection{Technical Constraints}
 Some technical constraints for the proof-of-concept implementation:
 
 \begin{itemize}
@@ -173,6 +178,13 @@ Some technical constraints for the proof-of-concept implementation:
     \item The source code should be hosted by \acrshort{din}'s Github.
 \end{itemize}
 
+
+
+\section{Target audience}
+
+\subsection{Public institutions}
+
+We want to build the trust in SSI-infrastructure that is need for public institutions to adopt the technology.
 
 
 \newpage
@@ -202,7 +214,7 @@ The team working on this project consists of a 1 student, 1 product owner, 2 tec
 
 \newpage
 
-\section{Proof-of-concept - \acrshort{did-cli}}
+\section{Proof-of-concept - DID CLI}
 
 The project description demands that a proof-of-concept agent should be developed. This proof-of-concept wallet will now be referred to as \acrfull{did-cli}. Chapter 2-7 are dedicated to describe how \acrshort{did-cli} was developed. Chapter 8-9 tries to take a step back again and answers the more general questions and goals set out by the project description.
 
