@@ -65,15 +65,22 @@ As of time of writing all these \acrshort{dids} are verified to be resolveable, 
 
 
 
+
+
+
+
+
+
+
+
 \newpage
 
 \subsection{DIDComm}
 
-How \acrshort{did}-agents establish connections and pass messages with each other.
+\acrshort{did}-agents use \acrshort{didcomm} to establish connections and pass messages to each other.
 
 
-Example of a \acrfull{dcpm} \footnote{https://identity.foundation/didcomm-messaging/spec/\#plaintext-message-structure}:
-\begin{lstlisting}[language=json]
+\begin{lstlisting}[language=json,caption={https://identity.foundation/didcomm-messaging/spec/\#plaintext-message-structure}]
 {
     "id": "1234567890",
     "type": "<message-type-uri>",
@@ -87,21 +94,46 @@ Example of a \acrfull{dcpm} \footnote{https://identity.foundation/didcomm-messag
 }
 \end{lstlisting}
 
-The encrypted variant of \acrfull{dcpm} is called \acrfull{dcem}\footnote{https://identity.foundation/didcomm-messaging/spec/\#didcomm-encrypted-message}.
+The encrypted variant of a \acrshort{dcpm} is called \acrfull{dcem}\footnote{https://identity.foundation/didcomm-messaging/spec/\#didcomm-encrypted-message}.
+
+
+
+
+
+
+
+
 
 
 
 \subsection{Verifiable Credentials (VCs)} 
 
-How \acrshort{did}-agents issue verifiable claims about the attributes of each other and their relationships - https://www.w3.org/TR/vc-data-model/ 
+\acrshort{did}-agents use \acrshort{vc} to issue claims. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/claims-example.png}
+  \caption{\textit{https://www.w3.org/TR/vc-data-model/#claims}}
+\end{figure}
+
+
+
+
+
+
+
 
 \newpage
 
+\section{Agents and Wallets}
 
+An application which implements \acrshort{ssi}-standards is often called an agent or a wallet.
 
-\section{Project Scope - Agents and Wallets}
-
-Within the \acrshort{ssi}-community there are two pieces of software that is talked about a lot - agents and wallets.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/agents-and-wallets.png}
+  \caption{\textit{https://livebook.manning.com/book/self-sovereign-identity/chapter-2/v-5/}}
+\end{figure}
 
 
 \subsection{Agents}
@@ -123,8 +155,7 @@ Within the \acrshort{ssi}-community there are two pieces of software that is tal
 
 \subsection{Agents vs Wallets}
 
-In any \acrshort{ssi} discussion these two terms may be used interchangeably about the same piece of software. This is because many instances of \acrshort{ssi} software are both an agent and a wallet at the same time. It just depends on the context of the discussion how you will refer to the software. If the discussion is about storing credentials and your DIDs, it is more natural to think about the software as a wallet. If the discussion is about issuing, signing, communicating, transfering, validating the best metaphor is to think about the software as an agent. That is what they are - two different kinds of metaphors. Two different kind of ways to look at the same thing.
-
+In any \acrshort{ssi} discussion these two terms may be used interchangeably about the same app. This is because many instances of \acrshort{ssi}-apps are both an agent and a wallet at the same time. It just depends on the context of the discussion how you refer to the app. If the discussion is about storing credentials and your DIDs, it is more natural to think about the app as a wallet. If the discussion is about issuing, signing, communicating, transfering, validating the best metaphor is to think about the app as an agent.
 
 
 
@@ -154,7 +185,12 @@ Based on the projects description it is useful to derive a list of goals for the
     \item Prove that the application is inter-operable with other existing \acrshort{ssi}-application.
 \end{itemize}
 
+
+
+
 \section{Boundaries}
+
+
 
 \subsection{Organizational Boundaries}
 
@@ -163,8 +199,11 @@ Based on the projects description it is useful to derive a list of goals for the
     \item Source-code should be hosted by DIN-Foundation.
 \end{itemize}
 
+
+
+
 \subsection{Technical Boundaries}
-Some technical constraints for the proof-of-concept implementation:
+Some technical boundaries for the proof-of-concept implementation:
 
 \begin{itemize}
     \item Should be implemented in the Rust programming language.
