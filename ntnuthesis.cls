@@ -375,3 +375,9 @@
   {\list{}{\labelwidth=0pt \leftmargin=#1
    \let\makelabel\descriptionlabel}}
   {\endlist}
+
+%----- CUSTOM Pandoc fixes -----
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  
+ \usepackage{svg}
