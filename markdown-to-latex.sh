@@ -3,6 +3,7 @@ set -e
 
 declare -a CHAPTERS=("introduction" "development process" "functional requirements" "user interface" "architecture" "results" "discussion" "conclusion")
 
+unzip -oq markdown.zip -d markdown
 
 i=1
 for CHAPTER in "${CHAPTERS[@]}";
