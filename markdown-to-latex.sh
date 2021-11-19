@@ -15,7 +15,7 @@ do
     CHAPTER_FOLDER=$(echo $CHAPTER_MD | sed 's/.md//g')
 
     # Copy image folder
-    cp -r "$CHAPTER_FOLDER" chapters/ 2>/dev/null || true # Fail silently
+    cp -r "$CHAPTER_FOLDER" . 2>/dev/null || true # Fail silently
 
     # Pandoc
     pandoc\
