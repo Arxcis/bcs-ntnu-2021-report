@@ -42,10 +42,10 @@ via STDIN/STDOUT.
 DID CLI is the binary executable which the user installs on his machine.
 The DID CLI is the only part of the application that is visible to the
 user. The user runs the application by typing
-\passthrough{\lstinline!did!} in the command-line. The user has to make
-sure that the directory which the \passthrough{\lstinline!did!}
+\lstinline!did! in the command-line. The user has to make
+sure that the directory which the \lstinline!did!
 -executable resides in is added to the terminals
-\passthrough{\lstinline!PATH!} variable.
+\lstinline!PATH! variable.
 
 \hypertarget{config}{%
 \subsection{Config}\label{config}}
@@ -106,7 +106,7 @@ types are selected and put into the Config-struct.
 
 Run takes the Config-struct and selects which command to run based on
 the Config.cmd variable. This can be done quite elegantly in Rust using
-the \passthrough{\lstinline!match!} primitive:
+the \lstinline!match! primitive:
 
 \begin{lstlisting}
 pub async fn run(config: Config) -> Result<String, std::io::Error> {
@@ -188,7 +188,7 @@ async fn present(didname: &str, dcem: &str) -> Result<String, std::io::Error>
 \end{lstlisting}
 
 As mentioned in 5.2.4, they need to be
-\passthrough{\lstinline!.await!}-ed, before they can be returned to the
+\lstinline!.await!-ed, before they can be returned to the
 user:
 
 \begin{lstlisting}
@@ -208,8 +208,8 @@ The local storage is a simple file-based database, where data about our
 agent is stored. This data includes private and public keys for
 encryption, message history and stored did-aliases.
 
-Here is an example of how the \passthrough{\lstinline!.did/!} folder
-looks after running \passthrough{\lstinline!did init!} :
+Here is an example of how the \lstinline!.did/! folder
+looks after running \lstinline!did init! :
 
 \begin{lstlisting}
 % tree .did/
@@ -243,8 +243,8 @@ did:key:z6Mkuqfe3ZXgRqqHZmTDP7egHWZCPBB6rS4EHHBouVRU8zvF
 
   \emph{\textgreater{}``When persisted as a file or attached as a
   payload in other contexts, the file extension for \textbf{DIDComm
-  encrypted messages} SHOULD be \passthrough{\lstinline!dcem!}, giving a
-  globbing pattern of \passthrough{\lstinline!.dcem!}; this SHOULD be
+  encrypted messages} SHOULD be \lstinline!dcem!, giving a
+  globbing pattern of \lstinline!.dcem!; this SHOULD be
   read as ``Star Dot D C E M'' or as ``D C E M'' files.''}
 
   \url{https://identity.foundation/didcomm-messaging/spec/\#didcomm-encrypted-message}
@@ -522,7 +522,7 @@ cargo 1.56.0 (4ed5d137b 2021-10-04)
 \end{lstlisting}
 
 An easy and recommended way to install the Rust toolchain is to use
-\passthrough{\lstinline!rustup!}:
+\lstinline!rustup!:
 
 \begin{lstlisting}[language=bash]
 % curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

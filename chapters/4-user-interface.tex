@@ -77,10 +77,10 @@ user interface and a screenshot of running the command.
 \item
   Creates an agent in the current directory.
 \item
-  The command creates a new \passthrough{\lstinline!.did/!}directory,
+  The command creates a new \lstinline!.did/!directory,
   inside your working directory.
 \item
-  Your agents DID will be returned to \passthrough{\lstinline!stdout!}
+  Your agents DID will be returned to \lstinline!stdout!
   when running this command.
 \item
   The command is idempotent.
@@ -139,7 +139,7 @@ user interface and a screenshot of running the command.
 
 \begin{itemize}
 \item
-  Show the did of a single \passthrough{\lstinline!<didname>!}.
+  Show the did of a single \lstinline!<didname>!.
 
   \begin{figure}
   \centering
@@ -154,15 +154,15 @@ user interface and a screenshot of running the command.
 
 \begin{itemize}
 \item
-  \passthrough{\lstinline!did connect!} connects a
-  \passthrough{\lstinline!<didname>!} to \passthrough{\lstinline!<did>!}
+  \lstinline!did connect! connects a
+  \lstinline!<didname>! to \lstinline!<did>!
 \item
-  \passthrough{\lstinline!did connect!} gives a
-  \passthrough{\lstinline!<did>!} a \passthrough{\lstinline!<didname>!}.
+  \lstinline!did connect! gives a
+  \lstinline!<did>! a \lstinline!<didname>!.
 \item
-  The \passthrough{\lstinline!<didname>!} is used in other commands, as
+  The \lstinline!<didname>! is used in other commands, as
   an easy way to refer to another agent's
-  \passthrough{\lstinline!<did>!}.
+  \lstinline!<did>!.
 
   \begin{figure}
   \centering
@@ -177,14 +177,14 @@ user interface and a screenshot of running the command.
 \begin{itemize}
 \item
   Wraps a user defined message inside a
-  \passthrough{\lstinline!<dcem>!}envelope.
+  \lstinline!<dcem>!envelope.
 \item
-  Sets the \passthrough{\lstinline!to!}header of the
-  \passthrough{\lstinline!<dcem>!} to the underlying
-  \passthrough{\lstinline!<did>!} refered to by the
-  \passthrough{\lstinline!<didname>!}.
+  Sets the \lstinline!to!header of the
+  \lstinline!<dcem>! to the underlying
+  \lstinline!<did>! refered to by the
+  \lstinline!<didname>!.
 \item
-  Gives the message a new globally unique \passthrough{\lstinline!id!} -
+  Gives the message a new globally unique \lstinline!id! -
   GUID.
 
   \begin{figure}
@@ -199,9 +199,9 @@ user interface and a screenshot of running the command.
 
 \begin{itemize}
 \item
-  Unwraps an \passthrough{\lstinline!<dcem>!} message from
-  \passthrough{\lstinline!stdin!} or from
-  \passthrough{\lstinline!<dcem>!}arg.
+  Unwraps an \lstinline!<dcem>! message from
+  \lstinline!stdin! or from
+  \lstinline!<dcem>!arg.
 \item
   Prints the plaintext body of the message.
 \item
@@ -236,9 +236,9 @@ user interface and a screenshot of running the command.
 \begin{itemize}
 \item
   Issues a verifiable credential addressed to the
-  \passthrough{\lstinline!did!} of \passthrough{\lstinline!<didname>!}:
+  \lstinline!did! of \lstinline!<didname>!:
 \item
-  Issues one of 4 \passthrough{\lstinline!<CredentialType>!}s:
+  Issues one of 4 \lstinline!<CredentialType>!s:
 
   \begin{itemize}
   \tightlist
@@ -296,8 +296,8 @@ user interface and a screenshot of running the command.
 
 \begin{itemize}
 \item
-  Prints \passthrough{\lstinline!<dcem>!} to
-  \passthrough{\lstinline!stdout!}, if, and only if, verification
+  Prints \lstinline!<dcem>! to
+  \lstinline!stdout!, if, and only if, verification
   succeeds.
 \item
   Example - where verification succeeds:
@@ -325,7 +325,7 @@ user interface and a screenshot of running the command.
   List all didcomm messages stored in the wallet.
 \item
   Messages are added to the wallet when using the
-  \passthrough{\lstinline!did hold!} command.
+  \lstinline!did hold! command.
 
   \begin{figure}
   \centering
@@ -341,7 +341,7 @@ user interface and a screenshot of running the command.
 \begin{itemize}
 \item
   Show the contents of a single didcomm message based on the given
-  \passthrough{\lstinline!<message id>!}.
+  \lstinline!<message id>!.
 
   \begin{figure}
   \centering
@@ -358,7 +358,7 @@ CLI}\label{intentional-limitations-of-the-cli}}
 \tightlist
 \item
   None of the commands have any optional-arguments - e.g
-  \passthrough{\lstinline!-option=<arg>!}. This is to keep program logic
+  \lstinline!-option=<arg>!. This is to keep program logic
   as simple as possible. If the CLI was intended for a broader audicene
   with multiple use-cases, options may be added. This CLI is a special
   purpose CLI, intended to solve a specific use-case, namely the
@@ -372,10 +372,10 @@ CLI}\label{intentional-limitations-of-the-cli}}
   the implementation easier.
 \item
   None of the commands have filepath arguments. The user is expected to
-  use \passthrough{\lstinline!cat <filepath>!} to read the contents of a
+  use \lstinline!cat <filepath>! to read the contents of a
   file, which is then fed into a positional argument of one of the
   commands. Example:
-  \passthrough{\lstinline!did read \\\\$(cat ../message.dcem)!} vs
-  \passthrough{\lstinline!did read ../message.dcem!}. This was done to
+  \lstinline!did read \\\\$(cat ../message.dcem)! vs
+  \lstinline!did read ../message.dcem!. This was done to
   simplify implementation.
 \end{itemize}
