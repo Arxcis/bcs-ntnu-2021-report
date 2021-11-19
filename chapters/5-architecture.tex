@@ -214,12 +214,12 @@ looks after running \lstinline!did init! :
 \begin{lstlisting}
 % tree .did/
 .did
-├── did-names
-│   └── did:key:z6Mkuqfe3ZXgRqqHZmTDP7egHWZCPBB6rS4EHHBouVRU8zvF
-├── dids
-│   └── self.did
-├── key.jwk
-└── messages
+|-- did-names/
+|    |--- did:key:z6Mkuqfe3ZXgRqqHZmTDP7egHWZCPBB6rS4EHHBouVRU8zvF
+|-- dids/
+|    |--- self.did
+|-- messages/
+|-- key.jwk
 \end{lstlisting}
 
 \begin{itemize}
@@ -491,8 +491,8 @@ vc.add_proof(proof);
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled(1)}
-\caption{Untitled(1)}
+\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 10.png}
+\caption{Untitled}
 \end{figure}
 
 This sequence diagrams shows how data flows when 2 people - Alice and
@@ -540,14 +540,14 @@ terminal, you should be able to build the debug version of DID-CLI:
 % cargo build
 % tree target/debug -L 1  
 target/debug
-├── build
-├── deps
-├── did            # <--- Debug executeable
-├── did.d
-├── examples
-├── incremental
-├── libdid.d
-└── libdid.rlib
+|-- build
+|-- deps
+|-- did            # <--- Debug executeable
+|-- did.d
+|-- examples
+|-- incremental
+|-- libdid.d
+|-- libdid.rlib
 \end{lstlisting}
 
 To build the optimised release variant, do:
@@ -556,14 +556,14 @@ To build the optimised release variant, do:
 % cargo build --release
 % tree target/release -L 1
 target/release
-├── build
-├── deps
-├── did          # <--- Release executeable
-├── did.d
-├── examples
-├── incremental
-├── libdid.d
-└── libdid.rlib
+|-- build
+|-- deps
+|-- did          # <--- Release executeable
+|-- did.d
+|-- examples
+|-- incremental
+|-- libdid.d
+|-- libdid.rlib
 \end{lstlisting}
 
 \hypertarget{run-1}{%

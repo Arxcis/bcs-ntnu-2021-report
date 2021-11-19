@@ -19,8 +19,7 @@ def main():
     # 1. Replace first occurance of section with chapter
     content = content.replace("section", "chapter", 1)
 
-    # 2. Rewrite "".svg" -> ""
-    content = content.replace(".svg", "")
+    # 2. Rewrite \passthrough
     content = replace_passthrough(content)
 
     file.seek(0)
