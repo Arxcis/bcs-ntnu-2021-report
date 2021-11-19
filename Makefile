@@ -28,4 +28,8 @@ clean:
 	-@$(RM) \
 		$(wildcard thesis-gnuplottex*) \
 		$(addprefix thesis,.gnuploterrors .aux .bbl .bcf .blg .lof .log .lol .lot .out .pdf .run.xml .toc .acn .glo .ist .acr .alg .glg .gls)
-.PHONY: clean
+
+latex:
+	sh markdown-to-latex.sh;
+
+.PHONY: clean latex

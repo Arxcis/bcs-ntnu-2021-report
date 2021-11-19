@@ -20,3 +20,7 @@ thesis.alg
 thesis.glg
 thesis.gls
 *~
+
+# Custom
+markdown/
+.DS_Store
