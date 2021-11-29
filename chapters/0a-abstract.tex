@@ -1,10 +1,10 @@
 \chapter*{Abstract}
 
-This work describes the development of Decentralized Identitfier Command-Line Interface (DID CLI) written in Rust.
+This work describes the development of Decentralized Identitfier Command-Line Interface (DID CLI) written in the Rust programming language.
 
 We found that while developing DID CLI we were able to implement all the layers of the Self-sovereign Identity (SSI)-stack using existing libraries. Layer 0 Cryptography, with scope limited to ed25519, was implemented using dalek-cryptography/ed25519-dalek\footnote{https://github.com/dalek-cryptography/ed25519-dalek}. Layer 1 DIDs, with scope limited to the did:key-method, was implemented using decentralized-identity/did-key.rs\footnote{https://github.com/decentralized-identity/did-key.rs}. Layer 2 DIDComm v2, was implemented using decentralized-identity/didcomm-rs\footnote{https://github.com/decentralized-identity/didcomm-rs}.
 Layer 3 Verifiable Credentials, was implemented using spruceid/ssi\footnote{https://github.com/spruceid/ssi}. And finally the DID CLI application is the manifestation of SSI layer 4 Applications.
 
-We were also able to prove that DIDComm v2 is indeed transport agnostic, as advertised\footnote{https://identity.foundation/didcomm-messaging/spec/#summary}, by doing a novel implementation of DIDComm v2 over Unix Standard In / Standard Out (STDIN/STDOUT)\footnote{https://man7.org/linux/man-pages/man3/stdout.3.html}. Implementing DIDComm over STDIN/STDOUT successfully demonstrated that DIDComm, and SSI as a hole, could be integrated into the existing Unix tools ecosystem in an elegant way.
+We were also able to prove that DIDComm v2 is indeed transport agnostic, as advertised\footnote{https://identity.foundation/didcomm-messaging/spec/\#summary}, by doing a novel implementation of DIDComm v2 over Unix Standard In / Standard Out (STDIN/STDOUT)\footnote{https://man7.org/linux/man-pages/man3/stdout.3.html}. Implementing DIDComm over STDIN/STDOUT successfully demonstrated that DIDComm, and SSI as a hole, could be integrated into the existing Unix tools ecosystem in an elegant way.
 
 Finally we demonstrated that, by using DID CLI in a Unix Terminal, 4 people were able to form a network of SSI agents, communicating with each other via the filesystem.
