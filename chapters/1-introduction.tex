@@ -7,8 +7,10 @@
 On April 25th 2016, Chirstopher Allen launched a blog-post laying out
 his vision for the future of digital identity titled
 \href{http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html}{``The
-Path to Self-Sovereign Identity''}. Allen's vision sees SSI as the next
-step in the evolution of digital identity: ``The models for online
+Path to Self-Sovereign Identity(SSI)''}. Allen's vision sees SSI as the next
+step in the evolution of digital identity: 
+
+``The models for online
 identity have advanced through 4 broad stages since the advent of the
 Internet:
 
@@ -21,10 +23,10 @@ Internet:
 \item
   Stage 3: User-centric identity
 \item
-  Stage 4: Self-sovereign identity
+  Stage 4: Self-sovereign identity'' - Allen
 \end{itemize}
 
-Decentralise Identifiers (DIDs) is a core SSI-technology, and it's
+Decentralised Identifiers (DIDs) is a core SSI-technology, and it's
 design goals gives us a hint about which problems SSI as a whole is
 trying to solve:
 
@@ -45,76 +47,86 @@ trying to solve:
   of attributes or other data.''
 \end{itemize}
 
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
+
 \hypertarget{ssi-and-web-3.0-in-the-news}{%
 \section{SSI and Web 3.0 in the
 news}\label{ssi-and-web-3.0-in-the-news}}
 
 Although SSI is not part of the general publics awareness at this point,
 some forward-leaning public institutions have started discussions about
-how to draw benefits from SSI technologies and Web 3.0 as a whole.
+how to draw benefits from SSI technologies and Web 3.0 as a whole:
+\begin{itemize}
+\tightlist
+\item
+    \textbf{EU, eIDAS and SSI} - ``SSI and eIDAS: a vision on how they are connected - Share your views!'' \footnote{https://ec.europa.eu/futurium/en/eidas-observatory/ssi-and-eidas-vision-how-they-are-connected-share-your-views.html}
+\item
+    \textbf{Canada and SSI} - ``The Future of Digital Identity in Canada'' \footnote{https://www.frontiersin.org/articles/10.3389/fbloc.2021.624258/full}
+\item
+    \textbf{Bank of America} - ``Bank of America Sees DeFi `Potentially More Disruptive Than Bitcoin'' \footnote{https://finance.yahoo.com/news/bank-america-sees-defi-potentially-164335888.html?guccounter=1}
+\end{itemize}
 
-\textbf{EU, eIDAS and SSI}
+\paragraph{}
 
-EU is aware of SSI and tries to marry it with its own eIDAS initiative
-
-\url{https://ec.europa.eu/futurium/en/eidas-observatory/ssi-and-eidas-vision-how-they-are-connected-share-your-views.html}
-
-\textbf{Canada and SSI}
-
-\url{https://www.frontiersin.org/articles/10.3389/fbloc.2021.624258/full}
-
-\textbf{Bank of America}
-
-Bank of America Sees DeFi `Potentially More Disruptive Than Bitcoin'
-
-\url{https://finance.yahoo.com/news/bank-america-sees-defi-potentially-164335888.html?guccounter=1}
-
-\textbf{``It's difficult to overstate how transformative blockchain
+``It's difficult to overstate how transformative blockchain
 technology, digital assets and the thousands of decentralized apps that
-have yet to be created could potentially be.''}
+have yet to be created could potentially be.'' - Bank Of America\footnote{https://coinmarketcap.com/alexandria/article/crypto-too-large-to-ignore-bank-of-america-says}
 
-\url{https://coinmarketcap.com/alexandria/article/crypto-too-large-to-ignore-bank-of-america-says}
 
 \hypertarget{ssi-core-standards}{%
 \section{SSI core standards}\label{ssi-core-standards}}
 
-The growth of SSI in recent years has been fuelled by the development of
-a set of core standards hosted by World-wide-web consortium (W3C) and
-Decentralized Identity Foundation (DIF).
+The growth of SSI in recent years has been fuelledby the continued effort from World-wide-web consortium (W3C) and Decentralized Identity Foundation (DIF) to develop standards to make different applications interoperable.
 
 \hypertarget{decentralised-identifiers-dids}{%
 \subsection{Decentralised identifiers
 (DIDs)}\label{decentralised-identifiers-dids}}
 
-DIDs is a standard hosted by W3C here
-\url{https://www.w3.org/TR/did-core/}.
-
-According to DID Use Cases, a DID is ``a new type of identifier that has
-4 essential characteristics'':
+DIDs is the standard hosted by W3C here \url{https://www.w3.org/TR/did-core/}. According to DID Use Cases\footnote{https://www.w3.org/TR/did-use-cases/}, a DID is ``a new type of identifier that has 4 essential characteristics'':
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  **``Decentralised:** There should be no central issuing agency;''
+  \textbf{``Decentralised:} There should be no central issuing agency.''
 \item
   ``\textbf{Persistent}: The identifier should be inherently persistent,
-  not requiring the continued operation of an underling organisation;''
+  not requiring the continued operation of an underling organisation.''
 \item
-  \textbf{Cryptographically verifiable}: It should be possible to prove
-  control of the identifier cryptographically''
+  \textbf{``Cryptographically verifiable}: It should be possible to prove
+  control of the identifier cryptographically.''
 \item
-  \textbf{Resolvable}: It should be possible to discover metadata about
-  the identifier.
+  \textbf{``Resolvable}: It should be possible to discover metadata about
+  the identifier.''
 \end{enumerate}
 
-There are many different types of DIDs that fit these characteristics. A
-specific type of DID is called a DID-method. Each DID-method provides a
-unique specification on how to perform the different
-DID-method-operations - Create, Resolve, Update, Deactivate.
 
-The simplest DID-method is called DID-key. DID-key is created by
-generating a cryptographic public-private keypair on your machine, and
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
+
+\textbf{DID methods} - There are many different types of DIDs that fit these characteristics. A
+specific type of DID is called a DID method. Each DID method provides a
+unique specification on how to perform the different
+DID method operations - Create, Resolve, Update, Deactivate.
+
+The simplest DID-method is called did:key. did:key is created by
+generating a cryptographic public-private keypair on your device, and
 using the public part of the keypair as a base for the DID.
 
 \emph{Example of a DID-key:}
@@ -126,7 +138,7 @@ did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH
 If you stumble upon a DID in the wild, it should be easy to recognise it
 as such, because they all share the same format.
 
-\emph{DID format}:
+\emph{Example of DID format}:
 
 \begin{lstlisting}[language=make]
 did:<method>:<unique method-specific string of characters>
@@ -144,20 +156,20 @@ did:sov:WRfXPg8dantKVubE3HX8pw
 \end{lstlisting}
 
 As of time of writing all these DIDs are resolveable and you should be
-able to resolve them by copy-pasting them into
+able to resolve them by copy-pasting them into the Universal Resolver hosted here
 \url{https://dev.uniresolver.io/}.
 
-\textbf{DID-document}
 
-When you resolve a DID you will receive a DID-document in return. This
+\paragraph{}
+
+\textbf{DID-document} - When you resolve a DID you will receive a DID-document in return. This
 DID-document gives you metadata about the DID. You will need the
 DID-document in case you want to interact with the the DID in any form,
 because it contains important things like public-keys, for encrypting
 the communication and services-endpoints exposing functionality to the
 public.
 
-\emph{Example of DID-document returned when resolving
-\lstinline!did:sov:WRfXPg8dantKVubE3HX8pw! :}
+\emph{Example the DID-document of \lstinline!did:sov:WRfXPg8dantKVubE3HX8pw! :}
 
 \begin{lstlisting}
  {
@@ -167,53 +179,35 @@ public.
     "https://w3id.org/security/suites/x25519-2019/v1"
   ],
   "id": "did:sov:WRfXPg8dantKVubE3HX8pw",
-  "verificationMethod": [
-    {
-      "type": "Ed25519VerificationKey2018",
-      "id": "did:sov:WRfXPg8dantKVubE3HX8pw#key-1",
-      "publicKeyBase58": "H3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
-    },
-    {
-      "type": "X25519KeyAgreementKey2019",
-      "id": "did:sov:WRfXPg8dantKVubE3HX8pw#key-agreement-1",
-      "publicKeyBase58": "FK2c4QudVyaodvX9LARDsbihkVBvWxe8oiJAiYQ2JpdC"
-    }
-  ],
-  "authentication": [
-    "did:sov:WRfXPg8dantKVubE3HX8pw#key-1"
-  ],
-  "assertionMethod": [
-    "did:sov:WRfXPg8dantKVubE3HX8pw#key-1"
-  ],
-  "keyAgreement": [
-    "did:sov:WRfXPg8dantKVubE3HX8pw#key-agreement-1"
-  ],
-  "service": [
-    {
-      "type": "agent",
-      "serviceEndpoint": "https://agents.danubeclouds.com/agent/WRfXPg8dantKVubE3HX8pw"
-    },
-    {
-      "type": "xdi",
-      "serviceEndpoint": "https://xdi03-at.danubeclouds.com/cl/+!:did:sov:WRfXPg8dantKVubE3HX8pw"
-    }
-  ]
+  "verificationMethod": [{"type": "Ed25519VerificationKey2018", ...},
+  "authentication": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-1"],
+  "assertionMethod": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-1"],
+  "keyAgreement": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-agreement-1"],
+  "service": [{"type": "agent", "serviceEndpoint": "https://agents...."}]
 }
 \end{lstlisting}
 
-\textbf{DID-agent}
-
-The entity which controls a DID, is referred to as an agent. To control
+\textbf{DID-agent} - The entity which controls a DID, is referred to as an agent. To control
 a DID, to become an agent, you must have access to a DIDs private keys.
 This will naturally limit who may be able to control a DID, to a single
 person, or a group of persons. More on agents later\ldots{}
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{didcomm-messaging-didcomm}{%
 \subsection{DIDComm Messaging
 (DIDComm)}\label{didcomm-messaging-didcomm}}
 
-DIDComm is a standard hosted by DIN here
-\url{https://identity.foundation/didcomm-messaging/spec/}.
+DIDComm is the standard hosted by DIF here \url{https://identity.foundation/didcomm-messaging/spec/}.
 
 Now that we have established what DIDs are, we know that each DID has an
 agent controlling it. DIDComm is the protocol for how these agents will
@@ -221,12 +215,11 @@ communicate together and how they will form networks of agents.
 
 \emph{``The purpose of DIDComm Messaging is to provide a secure, private
 communication methodology built atop the decentralized design of DIDs.''
--}
-\url{https://identity.foundation/didcomm-messaging/spec/\#purpose-and-scope}
+-}\footnote{https://identity.foundation/didcomm-messaging/spec/\#purpose-and-scope}
 
-\textbf{DIDComm Message envelope}
+\paragraph{}
 
-Each DIDComm message is sealed inside a standard envelope which looks
+\textbf{DIDComm Message envelope} - Each DIDComm message is sealed inside a standard envelope which looks
 like this:
 
 \begin{lstlisting}
@@ -244,15 +237,11 @@ like this:
 } 
 \end{lstlisting}
 
-See
 \url{https://identity.foundation/didcomm-messaging/spec/\#plaintext-message-structure}
 
-\textbf{Transport agnostic}
+\paragraph{}
 
-A big benefit of DIDComm is that it is transport agnostic. This means
-that a DIDComm message could be dispatched and delivered across any
-transport you may see fit. Examples of transports that work with DIDComm
-include:
+\textbf{Transport agnostic} - A big benefit of DIDComm is that it is transport agnostic. This means that a DIDComm message could be dispatched and delivered across any transport you may see fit. Examples of transports that work with DIDComm include:
 
 \begin{itemize}
 \tightlist
@@ -272,19 +261,30 @@ include:
   File sharing
 \end{itemize}
 
-\textbf{An evolving standard}
+\paragraph{}
 
-I could write a lot about DIDComm here, but that would be a bit
+\textbf{An evolving standard} - I could write a lot about DIDComm here, but that would be a bit
 pointless because the standard-document is very well written, and it is
 ever evolving, so my comments on it would quickly get outdated. This is
 true for any of the standards mentioned in this paper.
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
 
 \hypertarget{verifiable-credentials-vcs}{%
 \subsection{Verifiable Credentials
 (VCs)}\label{verifiable-credentials-vcs}}
 
-A standard hosted by W3C here
-\url{https://www.w3.org/TR/vc-data-model/}.
+Verifiable Credentials (VCs) is the standard hosted by W3C here \url{https://www.w3.org/TR/vc-data-model/}.
+
+\paragraph{}
 
 We have established that there are agents in the world. In the ideal
 SSI-utopia each agent will have a DID attached to them. The agents will
@@ -292,7 +292,9 @@ communicate and form networks of agents using DIDComm. The question left
 to answer is: What should agents talk aobut? That is where Verifiable
 Credentials (VCs) and Verifiable Presentations (VPs) come in.
 
-\textbf{Verifiable data vs plain old data} Verifiable credentials
+\paragraph{}
+
+\textbf{Verifiable data vs plain old data} - Verifiable credentials
 includes verifiable data. What separates verifiable data from plain old
 data? Verifiable data means that you will be able to verify who created
 the data in the first place. You are also able to get a
@@ -317,19 +319,21 @@ job applications, birth certificates, bank accounts. Wherever there it
 makes a difference who created the data, verifiable credentials is a
 good candidate technology to use.
 
-\textbf{Issuer, holder, verifier}
+\paragraph{}
 
-Agents may issue, hold and verify Verifiable credentials. Depending on
+\textbf{Issuer, holder, verifier} - Agents may issue, hold and verify Verifiable credentials. Depending on
 the role the agent regarding a specific piece of verifiable data, the
 agent will either be an issuer, holder and verifier. The same agent may
 be all of the above at the same time, depending on what verifiable data
 is being processed.
 
-\begin{figure}
-\centering
-\includegraphics{Introduction 99c57a51162f4f85bc7ec35261236693/Untitled.png}
-\caption{Untitled}
-\end{figure}
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
 
 \hypertarget{ssi-applications}{%
 \section{SSI Applications}\label{ssi-applications}}
