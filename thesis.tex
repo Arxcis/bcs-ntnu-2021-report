@@ -7,23 +7,25 @@
 \date{CC-BY \ntnuthesisdate}
 
 
-\addbibresource{thesis.bib}
+% \addbibresource{thesis.bib}
 
-\input{glossary.tex} % add glossary and acronym lists before document
+% \input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
 
 \input{chapters/0a-abstract.tex}
+\input{chapters/0b-aknowledgements}
 
 \tableofcontents
 %\listoffigures
 %\listoftables
 %\lstlistoflistings
 
-\printglossary[type=\acronymtype] % Print acronyms
-\printglossary                    % Print glossary
+%\printglossary[type=\acronymtype] % Print acronyms
+%\printglossary                    % Print glossary
 
 \input{chapters/1-introduction}
+\input{chapters/2-background}
 \input{chapters/2-development-process}
 \input{chapters/3-functional-requirements}
 \input{chapters/4-user-interface}
@@ -33,8 +35,8 @@
 \input{chapters/8-conclusion}
 
 
-\chapter*{\bibname}
-\printbibliography[heading=none]
+%\chapter*{\bibname}
+%\printbibliography[heading=none]
 
 %\appendix
 %\input{appendices/a-appendix.tex}

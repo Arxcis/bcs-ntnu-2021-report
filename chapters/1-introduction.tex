@@ -2,7 +2,7 @@
 \chapter{Introduction}\label{introduction}}
 
 \hypertarget{ssi-background}{%
-\section{SSI Background}\label{ssi-background}}
+\section{Self-Sovereign Identity (SSI)}\label{ssi-background}}
 
 On April 25th 2016, Chirstopher Allen launched a blog-post laying out
 his vision for the future of digital identity titled
@@ -48,12 +48,17 @@ trying to solve:
 \end{itemize}
 
 
+\paragraph{}
+
+\textbf{SSI and Web 3.0} - Also it's worth recognizing SSI as part of a greater ecosystem, often referred to as Web 3.0. Web 3.0 includes blockchains (Bitcoin, Ethereum, etc.), decentralised databases (IPFS, Arbitrum, etc.), Decentralised finance (DeFi), and more.
+
+
+
 
 % ############################################################################
 % ------------------------------- PAGE BREAK -----------------------------------
 % ############################################################################
 \pagebreak
-
 
 
 
@@ -65,6 +70,7 @@ news}\label{ssi-and-web-3.0-in-the-news}}
 Although SSI is not part of the general publics awareness at this point,
 some forward-leaning public institutions have started discussions about
 how to draw benefits from SSI technologies and Web 3.0 as a whole:
+
 \begin{itemize}
 \tightlist
 \item
@@ -82,297 +88,7 @@ technology, digital assets and the thousands of decentralized apps that
 have yet to be created could potentially be.'' - Bank Of America\footnote{https://coinmarketcap.com/alexandria/article/crypto-too-large-to-ignore-bank-of-america-says}
 
 
-\hypertarget{ssi-core-standards}{%
-\section{SSI core standards}\label{ssi-core-standards}}
 
-The growth of SSI in recent years has been fuelledby the continued effort from World-wide-web consortium (W3C) and Decentralized Identity Foundation (DIF) to develop standards to make different applications interoperable.
-
-\hypertarget{decentralised-identifiers-dids}{%
-\subsection{Decentralised identifiers
-(DIDs)}\label{decentralised-identifiers-dids}}
-
-DIDs is the standard hosted by W3C here \url{https://www.w3.org/TR/did-core/}. According to DID Use Cases\footnote{https://www.w3.org/TR/did-use-cases/}, a DID is ``a new type of identifier that has 4 essential characteristics'':
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{``Decentralised:} There should be no central issuing agency.''
-\item
-  ``\textbf{Persistent}: The identifier should be inherently persistent,
-  not requiring the continued operation of an underling organisation.''
-\item
-  \textbf{``Cryptographically verifiable}: It should be possible to prove
-  control of the identifier cryptographically.''
-\item
-  \textbf{``Resolvable}: It should be possible to discover metadata about
-  the identifier.''
-\end{enumerate}
-
-
-
-% ############################################################################
-% ------------------------------- PAGE BREAK -----------------------------------
-% ############################################################################
-\pagebreak
-
-
-
-
-
-\textbf{DID methods} - There are many different types of DIDs that fit these characteristics. A
-specific type of DID is called a DID method. Each DID method provides a
-unique specification on how to perform the different
-DID method operations - Create, Resolve, Update, Deactivate.
-
-The simplest DID-method is called did:key. did:key is created by
-generating a cryptographic public-private keypair on your device, and
-using the public part of the keypair as a base for the DID.
-
-\emph{Example of a DID-key:}
-
-\begin{lstlisting}[language=make]
-did:key:z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH
-\end{lstlisting}
-
-If you stumble upon a DID in the wild, it should be easy to recognise it
-as such, because they all share the same format.
-
-\emph{Example of DID format}:
-
-\begin{lstlisting}[language=make]
-did:<method>:<unique method-specific string of characters>
-\end{lstlisting}
-
-Here is a few more examples of different DIDs from different
-DID-methods:
-
-\begin{lstlisting}[language=make]
-did:elem:EiAS3mqC4OLMKOwcz3ItIL7XfWduPT7q3Fa4vHgiCfSG2A
-did:github:Caranty
-did:web:identity.foundation
-did:key:z6MkmjY8GnV5i9YTDtPETC2uUAW6ejw3nk5mXF5yci5ab7th
-did:sov:WRfXPg8dantKVubE3HX8pw
-\end{lstlisting}
-
-As of time of writing all these DIDs are resolveable and you should be
-able to resolve them by copy-pasting them into the Universal Resolver hosted here
-\url{https://dev.uniresolver.io/}.
-
-
-\paragraph{}
-
-\textbf{DID-document} - When you resolve a DID you will receive a DID-document in return. This
-DID-document gives you metadata about the DID. You will need the
-DID-document in case you want to interact with the the DID in any form,
-because it contains important things like public-keys, for encrypting
-the communication and services-endpoints exposing functionality to the
-public.
-
-\emph{Example the DID-document of \lstinline!did:sov:WRfXPg8dantKVubE3HX8pw! :}
-
-\begin{lstlisting}
- {
-  "@context": [
-    "https://www.w3.org/ns/did/v1",
-    "https://w3id.org/security/suites/ed25519-2018/v1",
-    "https://w3id.org/security/suites/x25519-2019/v1"
-  ],
-  "id": "did:sov:WRfXPg8dantKVubE3HX8pw",
-  "verificationMethod": [{"type": "Ed25519VerificationKey2018", ...},
-  "authentication": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-1"],
-  "assertionMethod": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-1"],
-  "keyAgreement": ["did:sov:WRfXPg8dantKVubE3HX8pw#key-agreement-1"],
-  "service": [{"type": "agent", "serviceEndpoint": "https://agents...."}]
-}
-\end{lstlisting}
-
-\textbf{DID-agent} - The entity which controls a DID, is referred to as an agent. To control
-a DID, to become an agent, you must have access to a DIDs private keys.
-This will naturally limit who may be able to control a DID, to a single
-person, or a group of persons. More on agents later\ldots{}
-
-
-
-
-% ############################################################################
-% ------------------------------- PAGE BREAK -----------------------------------
-% ############################################################################
-\pagebreak
-
-
-
-
-\hypertarget{didcomm-messaging-didcomm}{%
-\subsection{DIDComm Messaging
-(DIDComm)}\label{didcomm-messaging-didcomm}}
-
-DIDComm is the standard hosted by DIF here \url{https://identity.foundation/didcomm-messaging/spec/}.
-
-Now that we have established what DIDs are, we know that each DID has an
-agent controlling it. DIDComm is the protocol for how these agents will
-communicate together and how they will form networks of agents.
-
-\emph{``The purpose of DIDComm Messaging is to provide a secure, private
-communication methodology built atop the decentralized design of DIDs.''
--}\footnote{https://identity.foundation/didcomm-messaging/spec/\#purpose-and-scope}
-
-\paragraph{}
-
-\textbf{DIDComm Message envelope} - Each DIDComm message is sealed inside a standard envelope which looks
-like this:
-
-\begin{lstlisting}
-{
-  "typ": "application/didcomm-plain+json",
-  "id": "1234567890",
-  "type": "<message-type-uri>",
-  "from": "did:example:alice",
-  "to": ["did:example:bob"],
-  "created_time": 1516269022,
-  "expires_time": 1516385931,
-  "body": {
-    "messagespecificattribute": "and its value"
-  }
-} 
-\end{lstlisting}
-
-\url{https://identity.foundation/didcomm-messaging/spec/\#plaintext-message-structure}
-
-\paragraph{}
-
-\textbf{Transport agnostic} - A big benefit of DIDComm is that it is transport agnostic. This means that a DIDComm message could be dispatched and delivered across any transport you may see fit. Examples of transports that work with DIDComm include:
-
-\begin{itemize}
-\tightlist
-\item
-  HTTP
-\item
-  Snail-nail
-\item
-  Bluetooth
-\item
-  NFC
-\item
-  QR codes
-\item
-  Unix stdin/stdout
-\item
-  File sharing
-\end{itemize}
-
-\paragraph{}
-
-\textbf{An evolving standard} - I could write a lot about DIDComm here, but that would be a bit
-pointless because the standard-document is very well written, and it is
-ever evolving, so my comments on it would quickly get outdated. This is
-true for any of the standards mentioned in this paper.
-
-
-
-
-% ############################################################################
-% ------------------------------- PAGE BREAK -----------------------------------
-% ############################################################################
-\pagebreak
-
-
-
-\hypertarget{verifiable-credentials-vcs}{%
-\subsection{Verifiable Credentials
-(VCs)}\label{verifiable-credentials-vcs}}
-
-Verifiable Credentials (VCs) is the standard hosted by W3C here \url{https://www.w3.org/TR/vc-data-model/}.
-
-\paragraph{}
-
-We have established that there are agents in the world. In the ideal
-SSI-utopia each agent will have a DID attached to them. The agents will
-communicate and form networks of agents using DIDComm. The question left
-to answer is: What should agents talk aobut? That is where Verifiable
-Credentials (VCs) and Verifiable Presentations (VPs) come in.
-
-\paragraph{}
-
-\textbf{Verifiable data vs plain old data} - Verifiable credentials
-includes verifiable data. What separates verifiable data from plain old
-data? Verifiable data means that you will be able to verify who created
-the data in the first place. You are also able to get a
-cryptographic-guarantee about the integrity of the data - that no
-middle-men has tampered with the data. This is sometimes a good thing,
-and other times it is life-critical.
-
-For instance if you have gotten some data about the weather from a
-weather API. The API sources it's data from underlying data sources like
-\href{http://vy.no}{vy.no} and storm.no. If you receive plain old data
-from the API, you cannot know what underlying data source the data is
-coming from, just by looking the data. You cannot know if the weather
-API has tampered with the data or not. This is maybe not a big issue for
-weather reports (may be in some situations), but what if instead of
-weather we were talking about your blood type. What if you present some
-data about your blood-type, as a doctor you want to be very sure that
-that data is coming from a trusted laboratory, before you inject blood
-into your patient.
-
-Other examples where verifiable data is important includes passports,
-job applications, birth certificates, bank accounts. Wherever there it
-makes a difference who created the data, verifiable credentials is a
-good candidate technology to use.
-
-\paragraph{}
-
-\textbf{Issuer, holder, verifier} - Agents may issue, hold and verify Verifiable credentials. Depending on
-the role the agent regarding a specific piece of verifiable data, the
-agent will either be an issuer, holder and verifier. The same agent may
-be all of the above at the same time, depending on what verifiable data
-is being processed.
-
-
-% ############################################################################
-% ------------------------------- PAGE BREAK -----------------------------------
-% ############################################################################
-\pagebreak
-
-
-
-\hypertarget{ssi-applications}{%
-\section{SSI Applications}\label{ssi-applications}}
-
-The applications of the SSI-standards range far and wide, but can
-generally be categorised into two main categories - SSI agents and SSI
-wallets.
-
-\hypertarget{ssi-agents}{%
-\subsection{SSI Agents}\label{ssi-agents}}
-
-Applications that performs actions on behalf of on or more DIDs are
-referred to as agents. In the real world we find natural agents. People,
-organisations, machines, vehicles, anything that has an effect on the
-world, or is affected by the world in some ways is an agent. The SSI
-agent serves as a digital metaphor for these natural agents. It enables
-natural agents to operate as agents in the digital realm as well.
-
-The metaphor agent in the SSI space, is an evolution from the
-traditional client-server metaphor. In the ideal SSI world there are no
-clients and servers, only agents. The reason why this is important to
-notice, is that it forces us to rethink how we interact on the internet.
-The client-server view of the world creates a natural imbalance of
-power. In web 1.0 and web 2.0 architectures, the server has a
-disproportionate amount of power, and the client is subordinate. In the
-In the ideal SSI world there are only agents talking to other agents on
-an equal playing field. The SSI architecture has the potential to level
-the playing field. Because SSI disrupts the traditional architecture of
-the web, it is often referred to as web 3.0.
-
-\hypertarget{ssi-wallets}{%
-\subsection{SSI Wallets}\label{ssi-wallets}}
-
-What the SSI agent is to natural agents, the SSI wallet is to natural
-wallets. SSI wallets attempts to be the digital metaphor for the wallet
-you have in your pocket. Verifiable credentials are the things you want
-to put in your digital SSI wallet.
-
-Todo: Trinsic, Evernym, Apple Wallet.
 
 \hypertarget{project-team}{%
 \section{Project Team}\label{project-team}}
@@ -383,20 +99,38 @@ Todo: Trinsic, Evernym, Apple Wallet.
 The team working on this project consists of a 1 student, 1 product
 owner, 2 tech supervisors and 1 academic supervisor.
 
-\href{Introduction\%2099c57a51162f4f85bc7ec35261236693/Team\%20roles\%200464c60de630404e9d65e3e9be4e9695.csv}{Team
-roles}
+\begin{itemize}
+\tightlist
+\item
+    Jonas - Project lead, Student, Rust developer
+\item
+    Snorre - Project initiator, Client, Product owner
+\item
+    Deepti - Academic supervisor
+\item
+    Mariusz - Technical supervisor
+\item
+    Abylay - Technical supervisor
+\end{itemize}
 
-\hypertarget{project-owner}{%
-\subsection{Project owner}\label{project-owner}}
 
-Diwala is this projects initiator, represented by Snorre Lothar von
-Gohren. He is the CTO \& Co-Founder of Diwala, which is a for-profit
-company set out to ``build an ecosystem of digital skill identities with
-verifiable credentials''.
+\hypertarget{project-initiator}{%
+\subsection{Project Initiator}\label{project-initiator}}
 
-Snorre also founded DIN - a network of organisations which ``works to
+Snorre Lothar von Gohren is the project's initiator. He is the CTO \& Co-Founder of Diwala, which is a for-profit company set out to ``build an ecosystem of digital skill identities with verifiable credentials''.
+
+Snorre also founded DIN - a network of nordic organisations which ``works to
 promote decentralised identity and highlight how individuals and society
 is affected by it.
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
 
 \hypertarget{project-description}{%
 \section{Project description}\label{project-description}}
@@ -422,7 +156,7 @@ testing and verification. The project is language and platform agnostic.
 The biggest benefit in this is to showcase that the proclaimed panacea
 for digital identity, is actually possible. This work will rapport on
 hinders, benefits and possibilities with this ecosystem, and the
-importance of interoperability'' - Diwala}
+importance of interoperability''}
 
 \hypertarget{project-scope}{%
 \section{Project scope}\label{project-scope}}
@@ -437,8 +171,8 @@ utilise SSI tech, because they are guardians of many key pieces of
 personal data linked to the citizens of Norway. If these institutions
 were to start issuing verifiable data as Verifiable Credentials, they
 might be able to bootstrap SSI in Norway and rocket the Norwegian
-digital economy into the new web 3.0, SSI and third industrial
-revolution paradigms.
+digital economy into the Web 3.0 and SSI.
+
 
 \hypertarget{goals}{%
 \subsection{Goals}\label{goals}}
@@ -458,6 +192,16 @@ revolution paradigms.
   student on this project.
 \end{itemize}
 
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 \hypertarget{scenario}{%
 \subsection{Scenario}\label{scenario}}
 
@@ -465,6 +209,8 @@ To motivate the development and limit scope we want to define a specific
 scenario which our proof-of-concept should be the solution to. The
 real-world scenario depicted below is just for demonstration purposes
 and not an actual scenario:
+
+\paragraph{}
 
 \emph{The Norwegian drivers license issuer, Statens Vegvesen, is
 considering to start issuing its drivers licenses as VCs. Statens
@@ -475,6 +221,8 @@ and dip its toes into the water.}
 developed, which will issue, hold and verify driver-licenses as VCs. The
 proof-of-concept should demonstrate how it handles a situation were a
 driver is pulled over by the police.}
+
+\paragraph{}
 
 \emph{\textbf{Agents involved}:}
 
@@ -518,10 +266,19 @@ driver is pulled over by the police.}
   Only support one cryptographic-method: x25519/ed25519
 \end{itemize}
 
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 \hypertarget{proof-of-concept---did-cli}{%
 \section{Proof-of-concept - DID-CLI}\label{proof-of-concept---did-cli}}
 
-To be able to demonstrate the 1.7.2 scenario, the agents in the scenario
+To be able to demonstrate the 1.5.3 scenario, the agents in the scenario
 has to be able to do 2 things:
 
 \begin{enumerate}
@@ -535,12 +292,12 @@ has to be able to do 2 things:
 \end{enumerate}
 
 We propose to implement a proof-of-concept SSI agent/wallet as a
-Command-line Interface (CLI). The CLI will be used to simulate the
-scenario put forth by the problem description.
+Command-line Interface (CLI). The CLI will be used to demonstrate the
+scenario in 1.5.3.
 
 Each agent in the scenario will have their own terminal/window. Using
 the DID CLI, each agent will be able to pass DIDComm messages to each
-other via STDIN/STDOUT. The output from STDOUT in one agent may be
+other via STDIN/STDOUT and the filesystem. The output from STDOUT in one agent may be
 stored in a file. The file can then be passed to any other agent. The
 other agent reads the message in the file by passing the contents of the
 file to its DID-CLI STDIN.
@@ -552,20 +309,20 @@ file to its DID-CLI STDIN.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Introduction} - Background, project, scope, team, the DID CLI.
+  \textbf{Introduction} -Project description, scope, team, the DID CLI.
+\item
+  \textbf{Bacgkround} - Background documentation explaining core technologies.
 \item
   \textbf{Development Process -} How we developed DID CLI and this
   report.
 \item
-  \textbf{Requirements -} Listing functional requirements of DID-CLI.
+  \textbf{Functional Requirements -} Listing functional requirements of DID-CLI.
 \item
-  \textbf{Command-line Interface -} Explain the user interface (UI/UX)
-  of DID-CLI.
+  \textbf{User Interface -} Documenting the user interface (UI/UX) of DID-CLI.
 \item
-  \textbf{Architecture -} Component diagram, sequence diagrams of
-  DID-CLI.
+  \textbf{Architecture -} An overview of DID-CLI architecture and details about each component.
 \item
-  \textbf{Results -} Demo of DID-CLI implemented functionality.
+  \textbf{Results -} Demo of using DID-CLI to solve the scenario.
 \item
   \textbf{Discussion -} What did we decide, learn, think, feel?
 \item
