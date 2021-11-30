@@ -381,3 +381,4 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
   
  \usepackage{svg}
+ \usepackage{float}
