@@ -1,25 +1,23 @@
 \hypertarget{user-interface}{%
 \chapter{User Interface}\label{user-interface}}
 
-Based on the requirements from chapter 3. Functional Requirements, it is
-now possible to say something about the User Interface in general. The
-main User Interface will be as implemented as a Command-line Interface.
-This should be obvious after reading Chapter 3, as the chapters
-requirements was written with a CLI in mind.
+Based on the requirements from chapter 4. Functional Requirements, it is
+now possible to say something about the user interface in general. The
+user interface will be as implemented as a Command-line Interface.
+This should be obvious after reading Chapter 4, as the requirements was written with a CLI in mind.
 
 \hypertarget{unix-inspiration}{%
 \section{Unix inspiration}\label{unix-inspiration}}
 
 When implementing a CLI it is a good idea to draw inspiration from the
-established Unix community, which has historically pushed the CLI as the
+established Unix ecosystem, which has historically pushed the CLI as the
 primary interface when interacting with any computer for almost any
 task.
 
 \hypertarget{unix-pipelines}{%
-\subsection{\texorpdfstring{\textbf{Unix
-PIpelines}}{Unix PIpelines}}\label{unix-pipelines}}
+\subsection{Unix Pipelines}\label{unix-pipelines}}
 
-Many of the commands in the \emph{did-cli}, is designed in a way to
+Many of the commands in DID CLI, is designed in a way to
 easily integrate with existing Unix tools. The most important part of
 this integration, is to support optionally reading input from
 \emph{stdin}. Also it is important to take care in how output is written
@@ -44,8 +42,17 @@ did read message.dcem > message.dpem
 grep jonas message.dpem
 \end{lstlisting}
 
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 Different Unix-workflows require the ability to use both of the methods
-depicted in Chapter 4.1.1 and 4.1.2, which makes it important to support
+depicted in Chapter 5.1.1 and 5.1.2, which makes it important to support
 both of them. A Unix user will expect any CLI to work with both FILES
 and PIPES.
 
@@ -64,8 +71,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled.png}
+  \caption{did help}
   \end{figure}
 \end{itemize}
 
@@ -91,9 +98,18 @@ user interface and a screenshot of running the command.
 
 \begin{figure}
 \centering
-\includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 1.png}
-\caption{Untitled}
+\includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 1.png}
+\caption{did init}
 \end{figure}
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
 
 \hypertarget{did-doc}{%
 \subsection{did doc}\label{did-doc}}
@@ -115,8 +131,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 2.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 2.png}
+  \caption{did doc}
   \end{figure}
 \end{itemize}
 
@@ -129,8 +145,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 3.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 3.png}
+  \caption{did dids}
   \end{figure}
 \end{itemize}
 
@@ -143,10 +159,21 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 4.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 4.png}
+  \caption{did did}
   \end{figure}
 \end{itemize}
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{did-connect}{%
 \subsection{\texorpdfstring{did connect
@@ -166,8 +193,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 5.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 5.png}
+  \caption{did connect}
   \end{figure}
 \end{itemize}
 
@@ -189,8 +216,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 6.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 6.png}
+  \caption{did write}
   \end{figure}
 \end{itemize}
 
@@ -209,24 +236,24 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 7.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 7.png}
+  \caption{did read}
   \end{figure}
 \item
   \emph{Example - Read Verifiable Credential of type Passport}
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 8.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 8.png}
+  \caption{did read VC of type passport}
   \end{figure}
 \item
   Example - Read Verifiable Presentation of type Passport
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 9.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 9.png}
+  \caption{did read VP of type passport}
   \end{figure}
 \end{itemize}
 
@@ -256,8 +283,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 10.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 10.png}
+  \caption{did issue}
   \end{figure}
 \end{itemize}
 
@@ -270,8 +297,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 11.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 11.png}
+  \caption{did hold}
   \end{figure}
 \end{itemize}
 
@@ -285,8 +312,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 12.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 12.png}
+  \caption{did present}
   \end{figure}
 \end{itemize}
 
@@ -304,16 +331,16 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 13.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 13.png}
+  \caption{did verify}
   \end{figure}
 \item
   Example - where verification fails:
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 14.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 14.png}
+  \caption{did verify failure}
   \end{figure}
 \end{itemize}
 
@@ -329,8 +356,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 15.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 15.png}
+  \caption{did messages}
   \end{figure}
 \end{itemize}
 
@@ -345,8 +372,8 @@ user interface and a screenshot of running the command.
 
   \begin{figure}
   \centering
-  \includegraphics{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 16.png}
-  \caption{Untitled}
+  \includegraphics[width=\textwidth]{User Interface f8759a9462b24d5f95cf6123d68b89ea/Untitled 16.png}
+  \caption{did message}
   \end{figure}
 \end{itemize}
 
