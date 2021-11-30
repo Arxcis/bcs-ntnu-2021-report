@@ -4,14 +4,24 @@
 \hypertarget{overview}{%
 \section{Overview}\label{overview}}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/component-overview(1).png}
-\caption{component-overview(1).png}
+\includegraphics[width=\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/component-overview(1).png}
+\caption{DID CLI Architecture}
 \end{figure}
 
-Here is an overview of all the components of DID CLI's architecture. We
-are going to go through piece by piece.
+Here is an overview of all the components of DID CLI's architecture. In the next section we go through the arcitecture component by component.
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{components}{%
 \section{Components}\label{components}}
@@ -22,8 +32,8 @@ environment}\label{the-unix-programming-environment}}
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled.png}
-\caption{Untitled}
+\includegraphics[width=0.4\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled.png}
+\caption{The Unix programming environment}
 \end{figure}
 
 The environment in which the user runs the application. The user will be
@@ -35,8 +45,8 @@ via STDIN/STDOUT.
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 1.png}
-\caption{Untitled}
+\includegraphics[width=0.4\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 1.png}
+\caption{The CLI}
 \end{figure}
 
 DID CLI is the binary executable which the user installs on his machine.
@@ -52,8 +62,8 @@ sure that the directory which the \lstinline!did!
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 2.png}
-\caption{Untitled}
+\includegraphics[width=0.6\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 2.png}
+\caption{Config}
 \end{figure}
 
 The Config component is the part of the application which takes the
@@ -95,13 +105,21 @@ enum CMD {
 Depending on which command the user is trying to run, one of the enum
 types are selected and put into the Config-struct.
 
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 \hypertarget{run}{%
 \subsection{Run}\label{run}}
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 3.png}
-\caption{Untitled}
+\includegraphics[width=0.3\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 3.png}
+\caption{run()}
 \end{figure}
 
 Run takes the Config-struct and selects which command to run based on
@@ -138,23 +156,27 @@ pub async fn run(config: Config) -> Result<String, std::io::Error> {
 }
 \end{lstlisting}
 
-Note that all commands have different argument-signature, but identical
-result-signature, which makes it easy for the run-function to handle
-them in a general way. Some commands are async though, and need to be
-awaited for them before returned. Example:
+Note that some commands are async, and need to be awaited before returned:
 
 \begin{lstlisting}
 issue("Passport", &didname).await
 \end{lstlisting}
 
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
+
 \hypertarget{command-functions}{%
 \subsection{Command functions}\label{command-functions}}
-
-\begin{figure}
-\centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 4.png}
-\caption{Untitled}
-\end{figure}
 
 The simplest commands take no arguments.
 
@@ -165,6 +187,9 @@ did help
 \begin{lstlisting}
 fn help() -> Result<String, std::io::Error>
 \end{lstlisting}
+
+
+\paragraph{}
 
 But commands may be declared to take any amount of arguments. The
 arguments given to the function are mapped from the CLI args.
@@ -177,7 +202,11 @@ did read <dcem>
 fn read(dcem: &str) -> Result<String, std::io::Error>
 \end{lstlisting}
 
-Commands may also be declared as async as mentioned in 5.2.4 Run.
+
+
+\paragraph{}
+
+Commands may also be declared as async as mentioned in Section §6.2.4 Run.
 
 \begin{lstlisting}
 did present <didname> <dcem>
@@ -195,13 +224,22 @@ user:
 return present(&didname, &dcem).await
 \end{lstlisting}
 
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 \hypertarget{agent-local-storage}{%
 \subsection{Agent local storage}\label{agent-local-storage}}
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 5.png}
-\caption{Untitled}
+\includegraphics[width=0.4\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 5.png}
+\caption{Local storage}
 \end{figure}
 
 The local storage is a simple file-based database, where data about our
@@ -250,6 +288,16 @@ did:key:z6Mkuqfe3ZXgRqqHZmTDP7egHWZCPBB6rS4EHHBouVRU8zvF
   \url{https://identity.foundation/didcomm-messaging/spec/\#didcomm-encrypted-message}
 \end{itemize}
 
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
 \hypertarget{the-publicprivate-keypair}{%
 \subsection{The public/private
 keypair}\label{the-publicprivate-keypair}}
@@ -274,9 +322,10 @@ The controller of this key, controls the digital Self-Sovereign-identity
 which is built on top of it. If this key is lost or disclosed, consider
 your identity compromised.
 
-\textbf{Secure storage}
 
-This keypair whould ideally not be stored in a cleartext file, as it
+
+\paragraph{}
+\textbf{Secure storage} - This keypair whould ideally not be stored in a cleartext file, as it
 currently is in DID-CLI. In a production system this keypair would be
 stored in a secure storage provided by the specific platform the
 application is running on.
@@ -296,9 +345,10 @@ Examples of platform specific secure-storage:
   \url{https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API}
 \end{itemize}
 
-\textbf{Secure transmision}
 
-It is necessary to share the jwk with other agents, to establish
+
+\paragraph{}
+\textbf{Secure transmision} - It is necessary to share the jwk with other agents, to establish
 communication channels. When in transmit the private part of the jwk is
 left out, as shown below:
 
@@ -312,13 +362,26 @@ left out, as shown below:
 } 
 \end{lstlisting}
 
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
+
 \hypertarget{external-libraries}{%
 \section{External libraries}\label{external-libraries}}
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 6.png}
-\caption{Untitled}
+\includegraphics[width=0.5\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 6.png}
+\caption{External libraries}
 \end{figure}
 
 The external libraries help us implement the different layers of the
@@ -339,8 +402,8 @@ SSI-stack and cryptography.
 
   \begin{figure}
   \centering
-  \includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 7.png}
-  \caption{Untitled}
+  \includegraphics[width=0.7\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 7.png}
+  \caption{ed25519 dalek usage}
   \end{figure}
 \item
   \textbf{Usage:} This library is used on a single line of code which is
@@ -349,12 +412,21 @@ SSI-stack and cryptography.
 \begin{lstlisting}
 let private_key = ed25519_dalek::SecretKey::generate(&mut csprng).to_bytes();
 \end{lstlisting}
-
-  It is indirectly used by \textbf{did\_key} and \textbf{ssi} as well.
 \end{itemize}
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
 
 \hypertarget{did_key}{%
 \subsection{did\_key::}\label{did_key}}
+
 
 \begin{itemize}
 \item
@@ -368,8 +440,8 @@ let private_key = ed25519_dalek::SecretKey::generate(&mut csprng).to_bytes();
 
   \begin{figure}
   \centering
-  \includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 8.png}
-  \caption{Untitled}
+  \includegraphics[width=0.7\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 8.png}
+  \caption{did key usage}
   \end{figure}
 \item
   \textbf{Usage:} did\_key:: is used by almost all commands and is the
@@ -416,8 +488,8 @@ let shared_secret: Vec<u8> = from_key.key_exchange(&to_key);
 
   \begin{figure}
   \centering
-  \includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 9.png}
-  \caption{Untitled}
+  \includegraphics[width=0.7\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 9.png}
+  \caption{didcomm rs usage}
   \end{figure}
 \item
   \textbf{Usage:} The number of references to \textbf{didcomm\_rs} is
@@ -487,12 +559,12 @@ vc.add_proof(proof);
 \end{itemize}
 
 \hypertarget{sequence-diagram}{%
-\section{Sequence diagram}\label{sequence-diagram}}
+\section{Sequence diagram starring Bob and Alice}\label{sequence-diagram}}
 
 \begin{figure}
 \centering
-\includegraphics{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 10.png}
-\caption{Untitled}
+\includegraphics[width=.99\textwidth]{Architecture 1442df162dbe45f4a423ba37d3e12363/Untitled 10.png}
+\caption{Sequence diagram starring Bob and Alice}
 \end{figure}
 
 This sequence diagrams shows how data flows when 2 people - Alice and
@@ -500,9 +572,16 @@ Bob - are using DID-CLI. Alices side is more detailed to show how data
 flows inside the DID-CLI and to external libraries, while Bobs side only
 shows the interactions with the CLI.
 
-\begin{lstlisting}[language=bash]
-https://sequencediagram.org/index.html#initialData=title%20Issuing%20a%20VC%20to%20Bob%0A%0A%0Aparticipant%20Bob%20DID-CLI%0Aactor%20Bob%0A%0Aparticipant%20File%0A%0Aactor%20Alice%0Aparticipant%20Alice%20DID-CLI%0Aparticipant%20ed25519_dalek%0Aparticipant%20did_key%0Aparticipant%20ssi%0Aparticipant%20didcomm_rs%0A%0Aentryspacing%200.9%0ABob-%3EBob%20DID-CLI%3A%20did%20init%0ABob%3C%3C--Bob%20DID-CLI%3A%20(did)%0AFile%3C-Bob%3A%20Write(did)%0AAlice-%3EFile%3A%20Read(did)%0AAlice%3C%3C--File%3A%20(Bobs%20did)%0AAlice-%3EAlice%20DID-CLI%3A%20did%20init%0AAlice%20DID-CLI-%3Eed25519_dalek%3A%20Create%20private%20jwk%0AAlice%20DID-CLI%3C%3C--ed25519_dalek%3A%20(Private%20jwk)%0AAlice%3C%3C--Alice%20DID-CLI%3A%20(Alices%20did)%0AAlice-%3EAlice%20DID-CLI%3A%20Issue(Passport%20to%20Bobs%20did)%0AAlice%20DID-CLI-%3Edid_key%3A%20Init%20Alice%20DID(Alice%20private%20jwk)%0AAlice%20DID-CLI%3C%3C--did_key%3A%20(Alice%20DID)%0AAlice%20DID-CLI-%3Edid_key%3A%20Init%20Bob%20DID(Bobs%20did)%0AAlice%20DID-CLI%3C%3C--did_key%3A%20(Bob%20DID)%0A%0A%0AAlice%20DID-CLI-%3Essi%3A%20Issue%20Verifiable%20Credential%20(from%3A%20Alice%20DID%2C%20to%3A%20Bob%20DID)%0AAlice%20DID-CLI%3C%3C--ssi%3A%20(Signed%20verifiable%20credential)%0A%0AAlice%20DID-CLI-%3Edidcomm_rs%3A%20Create%20DIDComm-message(from%3A%20Alice%20DID%2C%20to%3A%20Bob%20DID%2C%20message%3A%20VC)%20%20%0A%0AAlice%20DID-CLI%3C%3C--didcomm_rs%3A%20(dcem)%0AAlice%3C%3C--Alice%20DID-CLI%3A%20(dcem)%0A%0AAlice-%3E%3EFile%3A%20Write%20(dcem)%0AFile%3C-Bob%3A%20Read(dcem)%0AFile--%3E%3EBob%3A%20(dcem)%0ABob-%3EBob%20DID-CLI%3A%20Hold(dcem)%0ABob%3C%3C--Bob%20DID-CLI%3A%20(dcem)%0ABob-%3EBob%20DID-CLI%3A%20Read(dcem)%0ABob%3C%3C--Bob%20DID-CLI%3A%20(vc%20Passport)%0A
-\end{lstlisting}
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{build-run-install}{%
 \section{Build, run, install}\label{build-run-install}}
@@ -565,6 +644,17 @@ target/release
 |-- libdid.d
 |-- libdid.rlib
 \end{lstlisting}
+
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{run-1}{%
 \subsection{Run}\label{run-1}}
