@@ -21,7 +21,7 @@ functionality across 4 distinct layers:
 \item
   \textbf{Layer 3:} Verifiable Credentials
 \item
-  \textbf{Layer 4:} Application (Scenario)
+  \textbf{Layer 4:} Application / Scenario / Governance
 \end{itemize}
 
 The specific names I have used for the layers are based on my own
@@ -31,31 +31,7 @@ stable, there is a general agreement about the number of layers and
 their scopes. Below is an image depicting an alternate view of the SSI
 stack.
 
-\begin{figure}
-\centering
-\includegraphics{Functional Requirements b66771c223f2424c9b1ba3285a2ba469/Untitled.png}
-\caption{Untitled}
-\end{figure}
 
-Image: An alternative view of the \emph{Sovrin SSI stack -
-\url{https://www.windley.com/archives/2020/03/the_sovrin_ssi_stack.shtml}}
-
-\textbf{Sidenote on Sovrin:}
-
-The image above refers the the Sovrin SSI stack. Sovrin is popular
-alternative to Bitcoin and Ethereum as an SSI ledger. What
-differentiates Sovrin from Ethereum and Bitcoin is that it is a ``public
-permissioned'' blockchain, whereas Bitcoin and Ethereum is ``public
-permissionless''.
-
-\begin{figure}
-\centering
-\includegraphics{Functional Requirements b66771c223f2424c9b1ba3285a2ba469/Untitled 1.png}
-\caption{Untitled}
-\end{figure}
-
-\emph{Image from ``The Technical Foundations of Sovrin'' -
-\url{https://www.evernym.com/wp-content/uploads/2017/07/The-Technical-Foundations-of-Sovrin.pdf}}
 
 \hypertarget{bdd-style-requirements}{%
 \section{BDD-style Requirements}\label{bdd-style-requirements}}
@@ -67,6 +43,15 @@ functional requirements describing behaviour in a human readable format.
 In BDD all our requirements should be easily translatable to tests. BDD
 is a tool for bridging the gap between technical engineers and
 non-technical users of the software.
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 Here are some of quotes about the philosophy behind BDD:
 
@@ -140,18 +125,15 @@ Here is an example of a valid \textbf{scenario:}
 **And** ensure the card is returned
 \end{lstlisting}
 
-There could be multiple \textbf{scenarios} per feature:
 
-\begin{lstlisting}[language=bash]
-**Scenario: Account is overdrawn past the overdraft limit
 
-Given** the account is overdrawn
-**And** the card is valid
-**When** the customer requests cash
-**Then** ensure a rejection message is displayed
-**And** ensure cash is not dispensed
-**And** ensure the card is returned
-\end{lstlisting}
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
 
 \hypertarget{layer-1---did}{%
 \section{Layer 1 - DID}\label{layer-1---did}}
