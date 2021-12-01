@@ -7,22 +7,32 @@
 Not only was the source-code open source, but also issue-tracking, the Kanban board, the project plan, meeting notes, the bachelor thesis - everything happened out in the open. This was part of our goal going into the project and we managed to stick to this goal.
 
 
-\section{Existing libraries for SSI in Rust are usable}
+\section{Demonstrated that existing SSI libraries in Rust are usable}
 
 We demonstrated that existing open-source libraries exist in Rust for all the SSI layers, making it a good environment to do SSI development.
 
 
-\section{Contribution to DIDComm v2 development}
+\section{Contributed to DIDComm v2 development}
 
-We demonstrated an implementation in Rust which used the DIDComm v2 reference implementation developed by DIN. Working with a real use case of DIDComm v2 got us in a position where we could give direct feedback to DIDComm v2 specification writers through Github issues, examples here\footnote{\url{https://github.com/decentralized-identity/didcomm-rs/issues/6}} and here \footnote{\url{https://github.com/decentralized-identity/didcomm-messaging/issues/138}}, mailing lists or via the DIF Slack channel.
+We demonstrated an implementation in Rust which used the DIDComm v2 reference implementation developed by DIN. Working with a real use case of DIDComm v2 got us in a position where we could give direct feedback to DIDComm v2 specification writers through Github issues, examples here\footnote{\url{https://github.com/decentralized-identity/didcomm-rs/issues/6}} and here \footnote{\url{https://github.com/decentralized-identity/didcomm-messaging/issues/138}} (my Github-tag is "@Arxcis"), mailing lists or via the DIF Slack channel.
 
 
-\section{DIDComm v2 over stdin/stdout}
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
+
+
+\section{Demonstrated DIDComm v2 over stdin/stdout}
 
 DIDComm v2 claims to be transport agnostic. We took this claim to it's extreme conclusion and implemented DIDComm v2 over stdin/stdout. Before this project started we were unsure about how well this would work. It turns out that it works really well and makes the integration with other Unix tools like \textit{cat}, \textit{echo} and the Unix filesystem  a pleasant experience.
 
 
 
-\section{Using DID CLI in a real world scenario}
+\section{Demontrated usage of DID CLI in a real world scenario}
 
 We demonstrated 4 SSI agents - Person, Police, vegvesen, government - each in their own terminal window. These 4 agents where able to form a network, which communicated using DIDComm over stdin/stdout and the unix filesystem. The demonstration was held in live in front of an audience staff at NTNU plus the sensor of this bachelor thesis.
