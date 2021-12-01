@@ -74,18 +74,18 @@ how to draw benefits from SSI technologies and Web 3.0 as a whole:
 \begin{itemize}
 \tightlist
 \item
-    \textbf{EU, eIDAS and SSI} - ``SSI and eIDAS: a vision on how they are connected - Share your views!'' \footnote{https://ec.europa.eu/futurium/en/eidas-observatory/ssi-and-eidas-vision-how-they-are-connected-share-your-views.html}
+    \textbf{EU, eIDAS and SSI} - ``SSI and eIDAS: a vision on how they are connected - Share your views!'' \footnote{\url{https://ec.europa.eu/futurium/en/eidas-observatory/ssi-and-eidas-vision-how-they-are-connected-share-your-views.html}}
 \item
-    \textbf{Canada and SSI} - ``The Future of Digital Identity in Canada'' \footnote{https://www.frontiersin.org/articles/10.3389/fbloc.2021.624258/full}
+    \textbf{Canada and SSI} - ``The Future of Digital Identity in Canada'' \footnote{\url{https://www.frontiersin.org/articles/10.3389/fbloc.2021.624258/full}}
 \item
-    \textbf{Bank of America} - ``Bank of America Sees DeFi `Potentially More Disruptive Than Bitcoin'' \footnote{https://finance.yahoo.com/news/bank-america-sees-defi-potentially-164335888.html?guccounter=1}
+    \textbf{Bank of America} - ``Bank of America Sees DeFi `Potentially More Disruptive Than Bitcoin'' \footnote{\url{https://finance.yahoo.com/news/bank-america-sees-defi-potentially-164335888.html?guccounter=1}}
 \end{itemize}
 
 \paragraph{}
 
 ``It's difficult to overstate how transformative blockchain
 technology, digital assets and the thousands of decentralized apps that
-have yet to be created could potentially be.'' - Bank Of America\footnote{https://coinmarketcap.com/alexandria/article/crypto-too-large-to-ignore-bank-of-america-says}
+have yet to be created could potentially be.'' - Bank Of America\footnote{\url{https://coinmarketcap.com/alexandria/article/crypto-too-large-to-ignore-bank-of-america-says}}
 
 
 
@@ -275,33 +275,6 @@ driver is pulled over by the police.}
 
 
 
-\hypertarget{proof-of-concept---did-cli}{%
-\section{Proof-of-concept - DID-CLI}\label{proof-of-concept---did-cli}}
-
-To be able to demonstrate the 1.5.3 scenario, the agents in the scenario
-has to be able to do 2 things:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Create and store Verifiable Credentials (VCs) in it's own digital
-  wallet.
-\item
-  Pass VCs as DIDComm messages to other agents.
-\end{enumerate}
-
-We propose to implement a proof-of-concept SSI agent/wallet as a
-Command-line Interface (CLI). The CLI will be used to demonstrate the
-scenario in 1.5.3.
-
-Each agent in the scenario will have their own terminal/window. Using
-the DID CLI, each agent will be able to pass DIDComm messages to each
-other via STDIN/STDOUT and the filesystem. The output from STDOUT in one agent may be
-stored in a file. The file can then be passed to any other agent. The
-other agent reads the message in the file by passing the contents of the
-file to its DID-CLI STDIN.
-
 \hypertarget{chapters}{%
 \section{Chapters}\label{chapters}}
 
@@ -311,7 +284,7 @@ file to its DID-CLI STDIN.
 \item
   \textbf{Introduction} -Project description, scope, team, the DID CLI.
 \item
-  \textbf{Bacgkround} - Background documentation explaining core technologies.
+  \textbf{Background} - Background documentation explaining core technologies.
 \item
   \textbf{Development Process -} How we developed DID CLI and this
   report.

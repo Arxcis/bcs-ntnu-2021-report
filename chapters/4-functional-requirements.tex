@@ -1,9 +1,39 @@
 \hypertarget{functional-requirements}{%
 \chapter{Functional Requirements}\label{functional-requirements}}
 
-This chapters systematically lays out the functional requirements which
-has to be implemented in the proof-of-concept application to satisfy the
-1.7.2 scenario.
+
+
+\hypertarget{proof-of-concept---did-cli}{%
+\section{Proof-of-concept Proposal - DID-CLI}\label{proof-of-concept---did-cli}}
+
+To be able to demonstrate the 1.5.3 scenario, the agents in the scenario
+has to be able to do 2 things:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create and store Verifiable Credentials (VCs) in it's own digital
+  wallet.
+\item
+  Pass VCs as DIDComm messages to other agents.
+\end{enumerate}
+
+We propose to implement a proof-of-concept SSI agent/wallet as a
+Command-line Interface (CLI). The CLI will be used to demonstrate the
+scenario in 1.5.3.
+
+Each agent in the scenario will have their own terminal/window. Using
+the DID CLI, each agent will be able to pass DIDComm messages to each
+other via STDIN/STDOUT\footnote{\url{https://man7.org/linux/man-pages/man3/stdout.3.html}} and the filesystem. The output from STDOUT in one agent may be
+stored in a file. The file can then be passed to any other agent. The
+other agent reads the message in the file by passing the contents of the
+file to its DID-CLI STDIN.
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
 
 \hypertarget{functional-requirements-layers}{%
 \section{Functional Requirements
@@ -45,10 +75,6 @@ is a tool for bridging the gap between technical engineers and
 non-technical users of the software.
 
 
-% ############################################################################
-% ------------------------------- PAGE BREAK -----------------------------------
-% ############################################################################
-\pagebreak
 
 
 
@@ -69,6 +95,15 @@ Here are some of quotes about the philosophy behind BDD:
 
 \emph{See ``Introducing BDD'' by Dan North -
 \url{http://dannorth.net/introducing-bdd/}}
+
+
+
+% ############################################################################
+% ------------------------------- PAGE BREAK -----------------------------------
+% ############################################################################
+\pagebreak
+
+
 
 \hypertarget{bdd-ubiquitous-language}{%
 \subsection{BDD Ubiquitous Language}\label{bdd-ubiquitous-language}}
@@ -124,6 +159,7 @@ Here is an example of a valid \textbf{scenario:}
 **And** ensure cash is dispensed
 **And** ensure the card is returned
 \end{lstlisting}
+
 
 
 

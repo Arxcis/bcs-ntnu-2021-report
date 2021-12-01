@@ -1,3 +1,47 @@
 \hypertarget{conclusion}{%
 \chapter{Conclusion}\label{conclusion}}
 
+\section{Summary}
+
+In chapter 1 - Introduction - we laid out the current state of SSI and how SSI fits into the broader Web 3.0 ecosystem. We introduced the project and the team that would be working on it. Scopes and boundaries for the project where agreed upon.
+
+
+\paragraph{}
+
+In chapter 2 - Background - we explained the four layers of the SSI stack and that there are two broad categories of SSI applications - wallets and agents.
+
+
+\paragraph{}
+In chapter 3 - Development Process - we gave the reader insight into how the development of DID CLI was organized. We also revealed which tools where used - Kanban, Github, Discord, MS teams, Slack and Toggl.
+
+  
+\paragraph{}
+In chapter 4 - Functional Requirements - The functional requirements of DID CLI was developed using a technique called Behaviour Driven Development (BDD). We systematically worked us through the four layers of the SSI stack, layer by layer.
+  
+  
+\paragraph{}
+In chapter 5 - User Interface - We get to experience how the user interface of DID CLI works and how it ties into the broader Unix ecosystem. The reader is presented with a list of all the available commands in DID CLI together with descriptions and screenshots of each command.
+
+
+\paragraph{}
+In chapter 6 - Architecture - An overview of DID-CLI the architecture is given. We also get more famliar with each component of the architecture. Also an analysis is given of the 4 external libraries which DID CLI depends on. We also learn how to install, build and RUN DID CLI. 
+
+
+\paragraph{}
+In chapter 7 - Results - We take a step back and look at what we were able to achieve by developing DID CLI. We learn that DID CLI was able to use existing Rust-libraries for most of it's core functionality. We learn that the novel approach of running DIDComm v2 over stdin/sdtout was a success and that by passing information via a Unix filesystem, 4 actors where able to create a network of SSI agents to simulate a real world scenario.
+
+
+\paragraph{}
+In chapter 8 - Discussion - We take a critical look on how this paper was developed. What went wrong? What is missing? What could have been done better and what we hope to achieve in the future projects.
+
+
+\paragraph{}
+Finally in chapter 9 - Conclusion - We do a summary and take a look on what the future holds for this very exciting field of computer engineering.
+
+\section{Future work}
+
+Since a core question of the problem description - "What is the state of interoperability in the SSI ecosystem?" - was not answered by this project, it is natural to suggest that this is something that could be picked up again in a later project.
+
+"How does one go about testing the state of interoperability in SSI?" - you might ask. I think that the SSI ecosystem has a lot of potential learn from the rigorous engineering behind ensuring interoperability in the graphics industry. In computer graphics we have this thing called the Vulkan API\footnote{\url{https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html}}. The Vulkan API is not very different from things like DIDComm v2 in the SSI space, where Vulkan is a communication protocol between applications/games and the graphics hardware. To ensure interoperability between different hardware drivers - AMD, Nvidia or Intel - the Khronos group has put a lot of effort into \textit{The Vulkan Conformance Test suite(CTS)}\footnote{\url{https://github.com/KhronosGroup/VK-GL-CTS}}. This test suite ensures that you are able to swap your NVidia card with an AMD card and be almost 100 percent confident that your vulkan-application/game still work.
+
+In my oppinion the SSI space needs it's own conformance test suite(CTS) for DIDComm v2, to ensure DIDComm v2 "drivers" actually stick to the rules. Only then can we grow the engineering confidence that serious applications could be built on top of it. We already have things like this in the SSI space. I am specifically thinking of \textit{The Aries interop test suite}\footnote{\url{https://github.com/hyperledger/aries-protocol-test-suite}}. Now what is Aries? Aries is the reason why DIDComm v2 has the v2 suffix. Because Aries is considered to be DIDComm v1\footnote{\url{https://github.com/hyperledger/aries-rfcs/blob/main/concepts/0005-didcomm/README.md}}.
